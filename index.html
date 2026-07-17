@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>孙灿 — 新闻传播 · 视觉叙事 · 商务实践</title>
+<style>
+/* ============================================================
+   CSS Custom Properties
+   ============================================================ */
+:root {
+  --ink: #14181E;
+  --paper: #FAF8F6;
+  --stone: #4A5058;
+  --bronze: #9E8B78;
+  --bronze-light: #C4B5A4;
+  --bronze-dim: rgba(158, 139, 120, 0.12);
+  --mist: #EDE9E3;
+  --mist-light: #F3F0EB;
+
+  --font-display: "Songti SC", "STSong", "FangSong", "KaiTi", "Noto Serif SC", serif;
+  --font-body: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+  --font-en: "Georgia", "Times New Roman", "Songti SC", serif;
+
+  --width-content: 920px;
+  --gap-section: 120px;
+  --gap-block: 48px;
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--stone);
+  background: var(--paper);
+}
+
+::selection {
+  background: var(--bronze-dim);
+  color: var(--ink);
+}
+
+a {
+  color: var(--bronze);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover { color: var(--ink); }
+
+img { display: block; max-width: 100%; }
+
+/* ============================================================
+   Typography
+   ============================================================ */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.section-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  margin-bottom: 16px;
+  font-family: var(--font-body);
+}
+
+/* ============================================================
+   Layout
+   ============================================================ */
+.container {
+  max-width: var(--width-content);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+section {
+  padding: var(--gap-section) 0;
+}
+
+/* ============================================================
+   Navigation
+   ============================================================ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  background: rgba(250, 248, 246, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, padding 0.3s;
+}
+.nav.scrolled {
+  border-bottom-color: var(--mist);
+  padding: 12px 0;
+}
+.nav-inner {
+  max-width: var(--width-content);
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+}
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 14px;
+  color: var(--stone);
+  font-family: var(--font-body);
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--bronze); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--ink);
+  transition: transform 0.3s, opacity 0.3s;
+}
+.nav-toggle.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+  overflow: hidden;
+}
+.hero .container {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px;
+  align-items: center;
+  width: 100%;
+}
+.hero-text {
+  padding-right: 24px;
+}
+.hero-name-cn {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 7vw, 80px);
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.1;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+.hero-name-en {
+  font-family: var(--font-en);
+  font-size: 14px;
+  letter-spacing: 0.28em;
+  color: var(--bronze);
+  margin-bottom: 28px;
+  text-transform: uppercase;
+}
+.hero-tagline {
+  font-family: var(--font-display);
+  font-size: clamp(16px, 2.5vw, 20px);
+  color: var(--stone);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+.hero-tagline .sep {
+  color: var(--bronze);
+  margin: 0 2px;
+}
+.hero-desc {
+  font-size: 15px;
+  color: var(--stone);
+  line-height: 1.8;
+  max-width: 440px;
+  opacity: 0.78;
+}
+
+/* Aperture */
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.aperture {
+  position: relative;
+  width: clamp(260px, 36vw, 360px);
+  height: clamp(260px, 36vw, 360px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.aperture-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--bronze);
+  opacity: 0;
+  animation: ringIn 0.9s ease-out forwards;
+}
+.aperture-ring:nth-child(1) {
+  width: 100%; height: 100%;
+  border-width: 0.5px;
+  animation-delay: 0.05s;
+}
+.aperture-ring:nth-child(2) {
+  width: 85%; height: 85%;
+  border-width: 1px;
+  opacity: 0.45;
+  animation-delay: 0.15s;
+}
+.aperture-ring:nth-child(3) {
+  width: 70%; height: 70%;
+  border-width: 0.5px;
+  opacity: 0.6;
+  animation-delay: 0.25s;
+}
+.aperture-ring:nth-child(4) {
+  width: 55%; height: 55%;
+  border-width: 0.5px;
+  opacity: 0.3;
+  animation-delay: 0.35s;
+}
+.aperture-photo {
+  width: 52%;
+  height: 52%;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  animation: photoIn 0.8s ease-out 0.45s forwards;
+  box-shadow: 0 0 0 1px var(--bronze-dim);
+}
+.aperture-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.04);
+}
+.aperture-accent {
+  position: absolute;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--bronze);
+  opacity: 0;
+  animation: dotIn 0.5s ease-out 0.6s forwards;
+}
+.aperture-accent.tl { top: 18%; left: 12%; }
+.aperture-accent.br { bottom: 18%; right: 12%; animation-delay: 0.7s; }
+
+@keyframes ringIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: var(--o, 0.5); transform: scale(1); }
+}
+@keyframes photoIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes dotIn {
+  from { opacity: 0; transform: scale(0); }
+  to   { opacity: 0.7; transform: scale(1); }
+}
+
+/* ============================================================
+   About
+   ============================================================ */
+.about {
+  padding-top: 0;
+  padding-bottom: var(--gap-section);
+}
+.about-content {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.2vw, 22px);
+  line-height: 1.75;
+  color: var(--ink);
+  max-width: 680px;
+}
+.about-content mark {
+  background: transparent;
+  color: var(--bronze);
+}
+
+/* ============================================================
+   Capabilities
+   ============================================================ */
+.caps {
+  background: var(--mist-light);
+}
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--mist);
+  border: 1px solid var(--mist);
+}
+.cap-card {
+  background: var(--mist-light);
+  padding: 40px 36px;
+  transition: background 0.3s;
+}
+.cap-card:hover {
+  background: var(--paper);
+}
+.cap-icon {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: var(--bronze);
+}
+.cap-card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  font-family: var(--font-display);
+}
+.cap-card p {
+  font-size: 14px;
+  color: var(--stone);
+  line-height: 1.75;
+  font-family: var(--font-body);
+}
+
+/* ============================================================
+   Timeline
+   ============================================================ */
+.timeline {
+  position: relative;
+  padding-left: 0;
+}
+.timeline-group {
+  margin-bottom: 48px;
+}
+.timeline-group:last-child { margin-bottom: 0; }
+.timeline-group-title {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--bronze);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 32px;
+  padding: 24px 0;
+  border-top: 1px solid var(--mist);
+}
+.timeline-meta {
+  font-size: 13px;
+  color: var(--bronze);
+  line-height: 1.6;
+  font-family: var(--font-body);
+}
+.timeline-meta .date {
+  display: block;
+  font-family: var(--font-en);
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+.timeline-meta .org {
+  display: block;
+  font-weight: 500;
+  color: var(--stone);
+}
+.timeline-meta .role {
+  display: block;
+  color: var(--bronze);
+  font-size: 12px;
+}
+.timeline-body h4 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+.timeline-body ul {
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.timeline-body ul li::before {
+  content: "—";
+  color: var(--bronze);
+  margin-right: 8px;
+  opacity: 0.5;
+}
+.timeline-body ul li {
+  color: var(--stone);
+}
+
+/* ============================================================
+   Data Highlights
+   ============================================================ */
+.data-section {
+  background: var(--ink);
+  color: var(--mist);
+  padding: 80px 0;
+}
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+.data-item {
+  padding: 20px 12px;
+}
+.data-number {
+  font-family: var(--font-en);
+  font-size: clamp(36px, 4.5vw, 52px);
+  font-weight: 500;
+  color: var(--mist);
+  line-height: 1.1;
+  display: block;
+  margin-bottom: 8px;
+}
+.data-unit {
+  font-size: 18px;
+  color: var(--bronze-light);
+  font-weight: 400;
+}
+.data-label {
+  font-size: 13px;
+  color: var(--bronze);
+  line-height: 1.6;
+  margin-top: 8px;
+}
+.data-sep {
+  width: 1px;
+  height: 48px;
+  background: rgba(255,255,255,0.08);
+}
+
+/* ============================================================
+   Contact
+   ============================================================ */
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+.contact-info h2 {
+  font-size: clamp(26px, 3.5vw, 36px);
+  margin-bottom: 16px;
+}
+.contact-info p {
+  font-size: 15px;
+  color: var(--stone);
+  line-height: 1.8;
+}
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--stone);
+}
+.contact-item .label {
+  font-size: 12px;
+  color: var(--bronze);
+  letter-spacing: 0.08em;
+  font-family: var(--font-body);
+  min-width: 48px;
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.footer {
+  text-align: center;
+  padding: 40px 0;
+  border-top: 1px solid var(--mist);
+  font-size: 13px;
+  color: var(--bronze);
+}
+
+/* ============================================================
+   Scroll Reveal
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 860px) {
+  :root {
+    --gap-section: 72px;
+    --gap-block: 32px;
+  }
+  .container { padding: 0 24px; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: rgba(250, 248, 246, 0.96);
+    backdrop-filter: blur(12px);
+    flex-direction: column;
+    gap: 0;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--mist);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a {
+    display: block;
+    padding: 12px 0;
+    font-size: 15px;
+    border-bottom: 1px solid var(--mist);
+  }
+  .nav-links li:last-child a { border-bottom: none; }
+  .nav-toggle { display: flex; }
+
+  .hero .container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  .hero-text { padding-right: 0; order: 2; }
+  .hero-desc { max-width: 100%; margin: 0 auto; }
+  .hero-visual { order: 1; }
+  .aperture {
+    width: 220px;
+    height: 220px;
+  }
+
+  .cap-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .data-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .data-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .data-number { font-size: 32px; }
+  .hero-name-cn { font-size: 40px; }
+  .aperture { width: 180px; height: 180px; }
+}
+
+/* ============================================================
+   Reduced Motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ============================================================
+   Keyboard Focus
+   ============================================================ */
+:focus-visible {
+  outline: 2px solid var(--bronze);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     Navigation
+     ============================================================ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-name">孙 灿</a>
+    <button class="nav-toggle" id="navToggle" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">关于</a></li>
+      <li><a href="#capabilities">能力</a></li>
+      <li><a href="#experience">经历</a></li>
+      <li><a href="#contact">联系</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ============================================================
+     Hero
+     ============================================================ -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-text">
+      <h1 class="hero-name-cn">孙&nbsp;灿</h1>
+      <p class="hero-name-en">Sun Can</p>
+      <p class="hero-tagline">
+        新闻传播<span class="sep"> × </span>视觉叙事<span class="sep"> × </span>商务实践
+      </p>
+      <p class="hero-desc">
+        复合型传媒人。做得了 SPSS 信效度分析，拍得出爆款短视频，也能在车展现场签下客户。
+        不是"什么都会一点"，而是每个方向都有拿得出手的结果。
+      </p>
+    </div>
+    <div class="hero-visual">
+      <div class="aperture" aria-hidden="true">
+        <div class="aperture-ring" style="--o:0.35"></div>
+        <div class="aperture-ring" style="--o:0.45"></div>
+        <div class="aperture-ring" style="--o:0.6"></div>
+        <div class="aperture-ring" style="--o:0.3"></div>
+        <div class="aperture-photo">
+          <img src="images/photo.jpg" alt="孙灿">
+        </div>
+        <div class="aperture-accent tl"></div>
+        <div class="aperture-accent br"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     About
+     ============================================================ -->
+<section class="about reveal" id="about">
+  <div class="container">
+    <span class="section-label">关于我</span>
+    <p class="about-content">
+      新闻传播学硕士，专业第一毕业。三年从<mark>志愿者做到社长</mark>，五年从<mark>新闻采编做到品牌公关</mark>。
+      能在田埂上做田野调查，也能在车展现场做商务谈判。
+      始终相信好的传播，是<mark>用正确的方式把正确的内容送到正确的人面前</mark>。
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     Capabilities
+     ============================================================ -->
+<section class="caps reveal" id="capabilities">
+  <div class="container">
+    <span class="section-label">核心能力</span>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-icon">▣</div>
+        <h3>学术研究</h3>
+        <p>
+          新闻传播学科班训练，熟练掌握 SPSS 定量分析与 Nvivo 质性编码。
+          独立完成 1316 份问卷信效度检验，撰写 2.3 万字调研报告获政府采纳。
+          成果入选 2025 中国旅游高质量发展创新论坛。
+        </p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">◈</div>
+        <h3>视觉创作</h3>
+        <p>
+          从摄影主题策划到视频拍摄剪辑全流程独立完成。
+          策划"高考公益拍摄"等话题营销带动营业额提升 30%，
+          单条视频播放量 1.2w+，客片转化率 65%。
+        </p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">▥</div>
+        <h3>商务实践</h3>
+        <p>
+          4 场大型车展公关执行经验，登记意向客户 130+。
+          统筹媒体关系维护与品牌二次曝光，
+          协助团队成交转化率提升约 15%。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Experience
+     ============================================================ -->
+<section class="reveal" id="experience">
+  <div class="container">
+    <span class="section-label">经历</span>
+
+    <div class="timeline">
+      <!-- Education -->
+      <div class="timeline-group">
+        <div class="timeline-group-title">教育</div>
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="date">2023.09 – 2026.06</span>
+            <span class="org">武汉体育学院</span>
+            <span class="role">新闻传播学 · 硕士</span>
+          </div>
+          <div class="timeline-body">
+            <ul>
+              <li>GPA 专业第一，一等研究生学业奖学金</li>
+              <li>2024 年媒介文化论坛三等奖、挑战杯校一等奖</li>
+              <li>主修：健康传播、体育国际传播、智能传播理论与实践</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="date">2016.09 – 2020.06</span>
+            <span class="org">中国矿业大学</span>
+            <span class="role">广播电视学 · 学士</span>
+          </div>
+          <div class="timeline-body">
+            <ul>
+              <li>GPA 前 10%，校级二等奖学金、优秀学生干部</li>
+              <li>江苏省微电影评选二等奖、徐州市金紫薇微电影大赛二等奖</li>
+              <li>主修：新媒体理论与实践、纪录片创作、新闻采访与写作</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Internship -->
+      <div class="timeline-group">
+        <div class="timeline-group-title">实习</div>
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="date">2025.09 – 2026.03</span>
+            <span class="org">武汉星空之旅汽车</span>
+            <span class="role">商务公关</span>
+          </div>
+          <div class="timeline-body">
+            <ul>
+              <li>参与 4 场线下车展公关执行，负责超跑展区陈列及客户接待</li>
+              <li>登记意向客户 130+，协助团队成交转化率提升约 15%</li>
+              <li>对接湖北日报传媒集团，维护企业媒体关系</li>
+              <li>调研 12 家竞品并输出运营数据周报，为营销决策提供依据</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="date">2023.03 – 2023.09</span>
+            <span class="org">果实摄影工作室</span>
+            <span class="role">摄影策划 / 运营</span>
+          </div>
+          <div class="timeline-body">
+            <ul>
+              <li>策划高考公益拍摄活动，系列视频浏览量 5w+，暑期营业额提升 30%</li>
+              <li>运营抖音 / 小红书账号，粉丝增长 40%，单条最高播放 1.2w</li>
+              <li>独立完成 8 期主题摄影创作，客片转化率 65%，复购占比 25%</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project -->
+      <div class="timeline-group">
+        <div class="timeline-group-title">项目</div>
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="date">2024.06 – 2025.05</span>
+            <span class="org">白杨坪镇茶产业振兴调研</span>
+            <span class="role">项目负责人</span>
+          </div>
+          <div class="timeline-body">
+            <ul>
+              <li>统筹 6 人跨学科团队，赴湖北恩施开展 5 天田野调查</li>
+              <li>设计"居民+游客"双版本问卷，完成 1316 份有效问卷 SPSS 分析</li>
+              <li>撰写 2.3 万字调研报告，获白杨坪镇政府官方采纳函</li>
+              <li>成果获 2025 中国旅游高质量发展创新论坛录用并作专题汇报</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Data Highlights
+     ============================================================ -->
+<section class="data-section reveal">
+  <div class="container">
+    <span class="section-label" style="color:var(--bronze-light)">关键数据</span>
+    <div class="data-grid">
+      <div class="data-item">
+        <span class="data-number">1316<span class="data-unit">份</span></span>
+        <p class="data-label">有效问卷信效度分析</p>
+      </div>
+      <div class="data-item">
+        <span class="data-number">50<span class="data-unit">万</span></span>
+        <p class="data-label">项目带动年游客接待量</p>
+      </div>
+      <div class="data-item">
+        <span class="data-number">5<span class="data-unit">万+</span></span>
+        <p class="data-label">策划视频系列浏览量</p>
+      </div>
+      <div class="data-item">
+        <span class="data-number">20<span class="data-unit">万</span></span>
+        <p class="data-label">累计劝募善款</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Contact
+     ============================================================ -->
+<section class="reveal" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-info">
+        <span class="section-label">联系</span>
+        <h2>期待与你交流</h2>
+        <p>如果你正在寻找一个既能扎实做研究、又能动手做内容、还能在前线做商务的复合型传媒人，欢迎联系。</p>
+      </div>
+      <div class="contact-details">
+        <div class="contact-item">
+          <span class="label">邮箱</span>
+          <span>250862478@qq.com</span>
+        </div>
+        <div class="contact-item">
+          <span class="label">电话</span>
+          <span>176-5636-7862</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Footer
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <p>孙灿 &copy; 2026 — 新闻传播 · 视觉叙事 · 商务实践</p>
+  </div>
+</footer>
+
+<!-- ============================================================
+     Scripts
+     ============================================================ -->
+<script>
+// Mobile nav toggle
+const toggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+toggle.addEventListener('click', () => {
+  toggle.classList.toggle('active');
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    toggle.classList.remove('active');
+    navLinks.classList.remove('open');
+  });
+});
+
+// Nav shadow on scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

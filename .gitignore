@@ -1,0 +1,16 @@
+# 系统文件
+.claude/
+*.bat
+*.ps1
+*_result.txt
+*_temp.*
+final_check.txt
+
+# 不需要部署的文件
+portfolio-swipe.html
+portfolio-template.html
+test-echarts.html
+SPSS分析可视化仪表盘.html
+echarts.min.js
+dji.png
+简历.md
