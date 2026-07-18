@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>孙灿 — 品牌传播 · 商务公关 · 内容创作</title>
+<meta name="description" content="孙灿的个人作品集。品牌传播、内容创作、商务公关方向，具备新闻采编、品牌活动、社交媒体运营与数据分析复合经验。">
+<title>孙灿 — 品牌传播 · 内容创作 · 商务公关</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>孙</text></svg>">
 <style>
 /* ============================================================
    CSS Custom Properties
@@ -18,13 +20,12 @@
   --mist: #EDE9E3;
   --mist-light: #F3F0EB;
 
-  --font-display: "Songti SC", "STSong", "FangSong", "KaiTi", "Noto Serif SC", serif;
-  --font-body: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
-  --font-en: "Georgia", "Times New Roman", "Songti SC", serif;
+  --font-display: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  --font-body: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Noto Sans SC", "Source Han Sans SC", sans-serif;
+  --font-en: "Georgia", "Times New Roman", serif;
 
   --width-content: 920px;
-  --gap-section: 100px;
-  --gap-block: 48px;
+  --gap-section: 88px;
 }
 
 /* ============================================================
@@ -81,7 +82,7 @@ h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-size: clamp(26px, 3.5vw, 36px);
   color: var(--ink);
-  margin-bottom: 48px;
+  margin-bottom: 40px;
 }
 
 /* ============================================================
@@ -157,6 +158,9 @@ section { padding: var(--gap-section) 0; }
   background: var(--ink);
   transition: transform 0.3s, opacity 0.3s;
 }
+.nav-toggle.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
 @media (max-width: 768px) {
   .nav-links { display: none; }
@@ -227,6 +231,20 @@ section { padding: var(--gap-section) 0; }
   line-height: 1.8;
   max-width: 460px;
   opacity: 0.82;
+  margin-bottom: 28px;
+}
+.hero-intent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  font-size: 13px;
+  color: var(--bronze);
+  padding-top: 20px;
+  border-top: 1px solid var(--mist);
+}
+.hero-intent strong {
+  color: var(--ink);
+  font-weight: 500;
 }
 
 /* Aperture */
@@ -284,11 +302,13 @@ section { padding: var(--gap-section) 0; }
   opacity: 0;
   animation: photoIn 0.8s ease-out 0.45s forwards;
   box-shadow: 0 0 0 1px var(--bronze-dim);
+  background: var(--mist);
 }
 .aperture-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   transform: scale(1.04);
 }
 .aperture-accent {
@@ -328,50 +348,42 @@ section { padding: var(--gap-section) 0; }
 }
 
 /* ============================================================
-   About
+   Data Strip
    ============================================================ */
-.about { padding-top: 0; padding-bottom: var(--gap-section); }
-.about-content {
-  font-family: var(--font-display);
-  font-size: clamp(16px, 2vw, 19px);
-  line-height: 1.85;
-  color: var(--ink);
-  max-width: 700px;
-}
-.about-content mark {
-  background: transparent;
-  color: var(--bronze);
-}
-.about-content p { margin-bottom: 16px; }
-.about-content p:last-child { margin-bottom: 0; }
-
-/* ============================================================
-   Honors Strip
-   ============================================================ */
-.honors-section { padding-top: 0; padding-bottom: 40px; }
-.honors-strip {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px;
-  font-size: 14px;
+.data-strip {
+  background: var(--mist-light);
   color: var(--stone);
-  font-family: var(--font-body);
-  padding: 24px 0;
-  border-top: 1px solid var(--mist);
-  border-bottom: 1px solid var(--mist);
+  padding: 48px 0;
 }
-.honors-label {
-  font-weight: 600;
-  color: var(--bronze);
-  letter-spacing: 0.08em;
-  margin-right: 6px;
-  font-size: 13px;
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  text-align: center;
 }
-.honors-sep {
+.data-item { padding: 8px; }
+.data-number {
+  font-family: var(--font-en);
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.1;
+  display: block;
+  margin-bottom: 4px;
+}
+.data-unit {
+  font-size: 16px;
   color: var(--bronze);
-  opacity: 0.3;
-  margin: 0 4px;
+  font-weight: 400;
+}
+.data-label {
+  font-size: 12px;
+  color: var(--stone);
+  line-height: 1.5;
+  margin-top: 4px;
+}
+@media (max-width: 768px) {
+  .data-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
 }
 
 /* ============================================================
@@ -392,15 +404,12 @@ section { padding: var(--gap-section) 0; }
 }
 .cap-card:hover { background: var(--paper); }
 .cap-icon {
-  font-size: 24px;
+  font-size: 16px;
   margin-bottom: 20px;
   color: var(--bronze);
   font-family: var(--font-display);
-}
-.cap-card h3 {
-  font-size: 19px;
-  margin-bottom: 12px;
-  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.4;
 }
 .cap-card p {
   font-size: 14px;
@@ -414,32 +423,114 @@ section { padding: var(--gap-section) 0; }
 }
 
 /* ============================================================
-   Portfolio Cases
+   Education
    ============================================================ */
-.portfolio-intro {
+.edu-section { padding: 40px 0; }
+.edu-card {
+  background: var(--mist-light);
+  padding: 32px;
+  border-radius: 2px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.edu-item h4 {
   font-size: 16px;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+.edu-item .edu-meta {
+  font-size: 13px;
+  color: var(--bronze);
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+}
+.edu-item p {
+  font-size: 14px;
   color: var(--stone);
-  max-width: 600px;
-  margin-bottom: 48px;
   line-height: 1.8;
+  margin-bottom: 10px;
+}
+.edu-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.edu-tag {
+  font-size: 12px;
+  color: var(--bronze);
+  padding: 3px 10px;
+  background: var(--paper);
+  border: 1px solid var(--mist);
+  border-radius: 2px;
+}
+@media (max-width: 768px) {
+  .edu-card { grid-template-columns: 1fr; gap: 24px; }
 }
 
-.case-grid {
+/* ============================================================
+   Case Studies
+   ============================================================ */
+.case-list { display: flex; flex-direction: column; gap: 64px; }
+
+.case-item {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 40px;
+  align-items: start;
+}
+.case-item:nth-child(even) {
+  grid-template-columns: 7fr 5fr;
+}
+.case-item:nth-child(even) .case-media { order: 2; }
+.case-item:nth-child(even) .case-content { order: 1; }
+
+.case-media {
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--mist);
+}
+.case-media.cover {
+  aspect-ratio: 4 / 3;
+}
+.case-media.cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.case-media.contain {
+  aspect-ratio: auto;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.case-media.contain img {
+  max-width: 100%;
+  max-height: 320px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.case-media-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  margin-bottom: 60px;
+  gap: 4px;
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--mist);
+  aspect-ratio: 4 / 3;
 }
-.case-grid.full { grid-template-columns: 1fr; }
-.case-grid.three { grid-template-columns: repeat(3, 1fr); }
-.case-card {
-  border-top: 1px solid var(--mist);
-  padding-top: 28px;
-  transition: border-color 0.3s;
+.case-media-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.case-card:hover { border-top-color: var(--bronze); }
-.case-card h3 {
-  font-size: 18px;
+
+.case-content h3 {
+  font-size: 20px;
   margin-bottom: 6px;
 }
 .case-meta {
@@ -466,161 +557,39 @@ section { padding: var(--gap-section) 0; }
 .case-body ul li {
   margin-bottom: 4px;
 }
-.case-map {
-  margin-top: 16px;
-  font-size: 13px;
+.case-tag {
+  display: inline-block;
+  font-size: 12px;
   color: var(--bronze);
-  line-height: 1.6;
-  padding: 14px 18px;
-  background: var(--mist-light);
+  padding: 3px 10px;
+  background: var(--bronze-dim);
   border-radius: 2px;
-}
-.case-map strong {
-  color: var(--stone);
-  font-weight: 500;
-}
-
-.case-figure {
-  margin-bottom: 20px;
-  border-radius: 2px;
-  overflow: hidden;
-  background: var(--mist);
-}
-.case-figure img {
-  width: 100%;
-  display: block;
-}
-.case-figure-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin-bottom: 20px;
-}
-.case-figure-row.two {
-  grid-template-columns: repeat(2, 1fr);
-}
-.case-figure-row.four {
-  grid-template-columns: repeat(4, 1fr);
-}
-.case-figure-row img {
-  border-radius: 2px;
+  margin-bottom: 12px;
+  margin-right: 6px;
 }
 
 @media (max-width: 768px) {
-  .case-grid { grid-template-columns: 1fr; gap: 32px; }
-  .case-grid.three { grid-template-columns: 1fr; }
-  .case-figure-row { grid-template-columns: repeat(2, 1fr); }
-  .case-figure-row.four { grid-template-columns: repeat(2, 1fr); }
+  .case-item,
+  .case-item:nth-child(even) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .case-item:nth-child(even) .case-media { order: 0; }
+  .case-item:nth-child(even) .case-content { order: 1; }
 }
 
 /* ============================================================
-   Narrative Video Section
+   Experience Timeline
    ============================================================ */
-.video-hero {
-  display: grid;
-  grid-template-columns: 5fr 7fr;
-  gap: 40px;
-  margin-bottom: 48px;
-  border-top: 1px solid var(--mist);
-  padding-top: 40px;
-}
-.video-hero-img {
-  border-radius: 2px;
-  overflow: hidden;
-  background: var(--mist);
-}
-.video-hero-img img {
-  width: 100%;
-  display: block;
-}
-.video-hero-text h3 {
-  font-size: 20px;
-  margin-bottom: 6px;
-}
-.video-hero-text .case-meta {
-  margin-bottom: 14px;
-}
-.video-hero-text .case-body {
-  margin-bottom: 14px;
-}
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  padding-top: 40px;
-  border-top: 1px solid var(--mist);
-}
-
-@media (max-width: 768px) {
-  .video-hero { grid-template-columns: 1fr; }
-  .video-grid { grid-template-columns: 1fr; }
-}
-
-/* ============================================================
-   Research
-   ============================================================ */
-.research-section {
-  background: var(--mist-light);
-}
-.research-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 48px;
-}
-.research-card {
-  background: var(--paper);
-  padding: 32px;
-  border-radius: 2px;
-}
-.research-card h3 {
-  font-size: 17px;
-  margin-bottom: 6px;
-}
-.research-card .research-meta {
-  font-size: 13px;
-  color: var(--bronze);
-  letter-spacing: 0.04em;
-  margin-bottom: 16px;
-}
-.research-card .research-img {
-  margin-bottom: 16px;
-  border-radius: 2px;
-  overflow: hidden;
-  background: var(--mist);
-}
-.research-card .research-img img {
-  width: 100%;
-  display: block;
-}
-.research-card p {
-  font-size: 14px;
-  color: var(--stone);
-  line-height: 1.85;
-}
-@media (max-width: 768px) {
-  .research-grid { grid-template-columns: 1fr; }
-}
-
-/* ============================================================
-   Timeline (condensed)
-   ============================================================ */
-.timeline-group { margin-bottom: 40px; }
-.timeline-group:last-child { margin-bottom: 0; }
-.timeline-group-title {
-  font-family: var(--font-body);
-  font-size: 13px;
-  letter-spacing: 0.12em;
-  color: var(--bronze);
-  margin-bottom: 16px;
-  text-transform: uppercase;
-}
+.timeline { max-width: 720px; }
 .timeline-item {
   display: grid;
   grid-template-columns: 140px 1fr;
   gap: 24px;
-  padding: 18px 0;
+  padding: 20px 0;
   border-top: 1px solid var(--mist);
 }
+.timeline-item:first-child { border-top: none; padding-top: 0; }
 .timeline-meta {
   font-size: 13px;
   color: var(--bronze);
@@ -657,50 +626,163 @@ section { padding: var(--gap-section) 0; }
   margin-right: 8px;
   opacity: 0.45;
 }
-.timeline-body ul li {
-  color: var(--stone);
-}
+.timeline-body ul li { color: var(--stone); }
+
 @media (max-width: 768px) {
   .timeline-item { grid-template-columns: 1fr; gap: 6px; }
 }
 
 /* ============================================================
-   Data Highlights
+   Research
    ============================================================ */
-.data-section {
-  background: var(--ink);
-  color: var(--mist);
-  padding: 72px 0;
-}
-.data-grid {
+.research-section { background: var(--mist-light); }
+.research-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 32px;
-  text-align: center;
 }
-.data-item { padding: 16px 8px; }
-.data-number {
-  font-family: var(--font-en);
-  font-size: clamp(36px, 4.5vw, 52px);
-  font-weight: 500;
-  color: var(--mist);
-  line-height: 1.1;
-  display: block;
+.research-card {
+  background: var(--paper);
+  padding: 28px;
+  border-radius: 2px;
+}
+.research-card .research-img {
+  margin-bottom: 16px;
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--mist-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  max-height: 240px;
+}
+.research-card .research-img img {
+  max-width: 100%;
+  max-height: 240px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.research-card h3 {
+  font-size: 17px;
   margin-bottom: 6px;
 }
-.data-unit {
-  font-size: 18px;
-  color: var(--bronze-light);
-  font-weight: 400;
-}
-.data-label {
+.research-card .research-meta {
   font-size: 13px;
   color: var(--bronze);
-  line-height: 1.6;
-  margin-top: 6px;
+  letter-spacing: 0.04em;
+  margin-bottom: 14px;
+}
+.research-card p {
+  font-size: 14px;
+  color: var(--stone);
+  line-height: 1.85;
 }
 @media (max-width: 768px) {
-  .data-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .research-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Honors & Certificates
+   ============================================================ */
+.honors-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-bottom: 32px;
+  font-size: 14px;
+  color: var(--stone);
+}
+.honors-list span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.honors-list span::before {
+  content: "·";
+  color: var(--bronze);
+  font-weight: 700;
+}
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.cert-item {
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--mist-light);
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+.cert-item img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+@media (max-width: 768px) {
+  .certs-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ============================================================
+   Skills
+   ============================================================ */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.skill-card {
+  padding: 28px;
+  background: var(--mist-light);
+  border-radius: 2px;
+}
+.skill-card h4 {
+  font-size: 15px;
+  margin-bottom: 18px;
+  color: var(--bronze);
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.skill-item {
+  margin-bottom: 14px;
+}
+.skill-item:last-child {
+  margin-bottom: 0;
+}
+.skill-name {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--stone);
+  margin-bottom: 6px;
+}
+.skill-level-text {
+  color: var(--bronze);
+  font-size: 12px;
+}
+.skill-bar {
+  height: 4px;
+  background: var(--mist);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.skill-level {
+  height: 100%;
+  background: var(--bronze);
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .skills-grid { grid-template-columns: 1fr; }
 }
 
 /* ============================================================
@@ -719,6 +801,20 @@ section { padding: var(--gap-section) 0; }
   font-size: 15px;
   color: var(--stone);
   line-height: 1.8;
+  margin-bottom: 24px;
+}
+.contact-intent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--stone);
+  padding-top: 20px;
+  border-top: 1px solid var(--mist);
+}
+.contact-intent strong {
+  color: var(--ink);
+  font-weight: 500;
 }
 .contact-details {
   display: flex;
@@ -778,9 +874,8 @@ section { padding: var(--gap-section) 0; }
   <div class="nav-inner">
     <a href="#hero" class="nav-name">孙 灿</a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#about">关于</a></li>
       <li><a href="#capabilities">能力</a></li>
-      <li><a href="#portfolio">作品</a></li>
+      <li><a href="#cases">案例</a></li>
       <li><a href="#research">研究</a></li>
       <li><a href="#experience">经历</a></li>
       <li><a href="#contact">联系</a></li>
@@ -800,11 +895,16 @@ section { padding: var(--gap-section) 0; }
       <h1 class="hero-name-cn">孙&nbsp;灿</h1>
       <p class="hero-name-en">Sun Can</p>
       <p class="hero-tagline">
-        新闻传播<span class="sep">×</span>品牌公关<span class="sep">×</span>内容创作
+        品牌传播<span class="sep">×</span>内容创作<span class="sep">×</span>媒体公关
       </p>
       <p class="hero-desc">
-        求职方向：品牌公关、市场策划、企业传播。从市级电视台新闻采编与日报社记者起步，到甲方品牌公关实战。对接过省级主流媒体，运营过抖音/小红书品牌账号，在车展现场统筹过品牌活动。从媒体关系到内容策略，从田野调研到数据分析——每个方向都不是"听说过"，而是亲手做过。
+        武汉体育学院新闻传播学硕士（专业第一）。具备媒体、企业、学术三线复合经验，擅长将传播策略转化为可落地的内容与品牌方案。
       </p>
+      <div class="hero-intent">
+        <span><strong>求职方向</strong>　品牌公关 / 市场策划 / 企业传播</span>
+        <span><strong>工作城市</strong>　深圳</span>
+        <span><strong>到岗时间</strong>　随时</span>
+      </div>
     </div>
     <div class="hero-visual">
       <div class="aperture">
@@ -813,7 +913,7 @@ section { padding: var(--gap-section) 0; }
         <div class="aperture-ring" style="--o:0.6"></div>
         <div class="aperture-ring" style="--o:0.3"></div>
         <div class="aperture-photo">
-          <img src="images/avatar.jpg" alt="孙灿" onerror="this.style.display='none'">
+          <img src="avatar.jpg" alt="孙灿" loading="lazy" onerror="this.style.display='none'">
         </div>
         <div class="aperture-accent tl"></div>
         <div class="aperture-accent br"></div>
@@ -823,48 +923,33 @@ section { padding: var(--gap-section) 0; }
 </section>
 
 <!-- ============================================================
-     About
+     Data Strip
      ============================================================ -->
-<section class="about reveal" id="about">
+<section class="data-strip reveal">
   <div class="container">
-    <span class="section-label">关于我</span>
-    <div class="about-content">
-      <p>
-        从大一寒假在鲁山县电视台跟记者上山下乡拍脱贫攻坚，到宿迁日报社的选题会、宿迁电视台的演播室，再到甲方品牌公关的车展Campaign——<mark>我的传播训练从一线新闻采编起步</mark>，横跨媒体、教学、公关三条线。
-      </p>
-      <p>
-        考研失利后教过一年高三语文，学会了控场和把复杂的事讲清楚。三年硕士把零散的实践串成体系，专业第一毕业。
-      </p>
-      <p>
-        投入品牌传播领域，是因为我相信——<mark>在田间地头拍过镜头、在截稿压力下写过新闻稿、在车展现场统筹过品牌活动的人</mark>，更知道怎么把品牌的故事讲进用户心里。
-      </p>
+    <div class="data-grid">
+      <div class="data-item">
+        <span class="data-number">1316<span class="data-unit">份</span></span>
+        <p class="data-label">有效问卷 SPSS 信效度分析</p>
+      </div>
+      <div class="data-item">
+        <span class="data-number">23<span class="data-unit">万字</span></span>
+        <p class="data-label">累计调研报告与论文撰写</p>
+      </div>
+      <div class="data-item">
+        <span class="data-number">15<span class="data-unit">万</span></span>
+        <p class="data-label">抖音视频累计浏览量</p>
+      </div>
+      <div class="data-item">
+        <span class="data-number">5<span class="data-unit">场</span></span>
+        <p class="data-label">线下品牌活动统筹执行</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     Honors Strip
-     ============================================================ -->
-<section class="honors-section reveal">
-  <div class="container">
-    <div class="honors-strip">
-      <span class="honors-label">荣誉</span>
-      <span class="honors-sep">·</span>
-      <span>2024 媒介文化论坛三等奖</span>
-      <span class="honors-sep">·</span>
-      <span>挑战杯校一等奖</span>
-      <span class="honors-sep">·</span>
-      <span>江苏省微电影评选二等奖</span>
-      <span class="honors-sep">·</span>
-      <span>校优秀毕业论文</span>
-      <span class="honors-sep">·</span>
-      <span>校优秀毕业生</span>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     Capabilities — 3 cards
+     Capabilities
      ============================================================ -->
 <section class="caps reveal" id="capabilities">
   <div class="container">
@@ -873,19 +958,19 @@ section { padding: var(--gap-section) 0; }
       <div class="cap-card">
         <div class="cap-icon">媒体关系与品牌公关</div>
         <p>
-          对接湖北日报传媒集团，维护企业媒体关系库。独立撰写品牌通稿与媒体沟通材料。5 场线下品牌活动 Campaign 执行，配合武汉文旅集团完成多方协同。曾在省级电视台与日报社完成新闻采编实习，理解主流媒体话语体系与内容生产流程。
+          对接省级主流媒体，维护企业媒体关系库。独立撰写品牌通稿与媒体沟通材料。完成 5 场线下品牌活动全流程执行，实现多利益相关方协同与现场品牌露出把控。
         </p>
       </div>
       <div class="cap-card">
         <div class="cap-icon">内容策略与社交媒体运营</div>
         <p>
-          独立运营抖音/小红书账号，22 条短视频累计浏览 15w，粉丝增长 40%。策划"高考公益拍摄"话题营销，浏览量 5w+ 带动营业额提升 30%。小红书个人账号发布"考研复试调剂笔记"系列 4 篇，浏览量达 8k，咨询服务近百人。抖音个人账号策划"小城烟火气"摄影图集，浏览量达 1.4w。独立完成 8 期主题摄影创作，客片转化率 65%——从创作者视角理解 KOL 合作生态与内容策略。
+          独立运营抖音/小红书账号，22 条短视频累计浏览 15w，粉丝增长 40%。策划话题营销带动营业额提升 30%。小红书个人账号发布"考研复试调剂笔记"系列 4 篇，浏览量达 8k，咨询服务近百人。抖音个人账号策划"小城烟火气"摄影图集，浏览量达 1.4w。独立完成 8 期主题摄影创作，客片转化率 65%——从创作者视角理解内容策略与达人合作生态。
         </p>
       </div>
       <div class="cap-card">
         <div class="cap-icon">数据分析与调研洞察</div>
         <p>
-          独立完成 1316 份问卷 SPSS 信效度分析与 Nvivo 质性编码。每周输出竞品数据周报为营销决策提供依据。毕业论文青年夜校前中期调研，深度访谈近 50 人次。具备从信息监测→趋势研判→周期性报告输出的完整方法论。两篇获奖论文均涉及社交媒体文本的结构化叙事分析。
+          独立完成 1316 份问卷 SPSS 信效度分析与 Nvivo 质性编码。每周输出竞品数据周报。毕业论文青年夜校前中期调研，深度访谈近 50 人次。具备从信息监测、趋势研判到周期性报告输出的完整方法论。
         </p>
       </div>
     </div>
@@ -893,296 +978,237 @@ section { padding: var(--gap-section) 0; }
 </section>
 
 <!-- ============================================================
-     Portfolio — 作品精选
+     Education
      ============================================================ -->
-<section class="reveal" id="portfolio">
+<section class="edu-section reveal">
   <div class="container">
-    <span class="section-label">作品精选</span>
-    <h2 class="section-title">品牌传播 · 案例与实践</h2>
-    <p class="portfolio-intro">
-      以下案例覆盖媒体关系、品牌活动、内容创作与叙事影像四个维度。每个案例都标注了与品牌传播核心能力的映射。
-    </p>
-
-    <!-- 品牌公关与媒体 -->
-    <h3 style="font-family:var(--font-display);font-size:20px;color:var(--ink);margin-bottom:28px;">
-      品牌公关 · 媒体关系
-    </h3>
-    <div class="case-grid">
-
-      <div class="case-card">
-        <div class="case-figure-row two">
-          <img src="images/04-活动照片/武汉美好车展1.png" alt="武汉美好车展" onerror="this.parentElement.style.display='none'">
-          <img src="images/04-活动照片/武汉美好车展2.png" alt="武汉美好车展现场" onerror="this.parentElement.style.display='none'">
-        </div>
-        <h3>武汉国际车展品牌活动 Campaign</h3>
-        <p class="case-meta">2025.09 – 2026.03 · 品牌公关 · 武汉星空之旅</p>
-        <div class="case-body">
-          <ul>
-            <li>参与 5 场线下品牌活动，负责超跑展区陈列方案制定、现场协调与品牌露出把控</li>
-            <li>登记意向客户 130+，完成现场品牌引流</li>
-            <li>配合武汉文旅集团完成多利益相关方协同执行</li>
-            <li>对接湖北日报传媒集团，维护企业媒体关系库，策划荣誉传播的二次传播角度</li>
-          </ul>
-        </div>
-        <div class="case-map">
-          <strong>▶ 映射大疆：</strong>新品发布 Campaign 的多方协同执行 · 品牌活动媒体邀约与现场管理 · 媒体关系维护与资源库建设
+    <span class="section-label">教育背景</span>
+    <div class="edu-card">
+      <div class="edu-item">
+        <h4>武汉体育学院</h4>
+        <p class="edu-meta">新闻传播学 · 硕士 · 2023.09 – 2026.06</p>
+        <p>
+          GPA 专业第一，一等研究生学业奖学金。校优秀毕业生、校优秀毕业论文。研究方向为青年社交与空间传播、健康传播与社交媒体叙事分析。
+        </p>
+        <div class="edu-tags">
+          <span class="edu-tag">专业第一</span>
+          <span class="edu-tag">一等奖学金</span>
+          <span class="edu-tag">优秀毕业论文</span>
         </div>
       </div>
-
-      <div class="case-card">
-        <div class="case-figure" style="background:var(--ink);padding:32px 28px;color:var(--mist);text-align:center;">
-          <div style="font-family:var(--font-display);font-size:40px;margin-bottom:12px;opacity:0.6;">&#x1F4F0;</div>
-          <div style="font-size:14px;line-height:1.8;opacity:0.8;">《宿迁外卖小哥——烈日下穿梭在城市里的超人》</div>
-          <div style="font-size:12px;color:var(--bronze);margin-top:10px;">宿迁日报社 · 独立采写</div>
-        </div>
-        <h3>媒体新闻采编 · 从一线记者到品牌公关</h3>
-        <p class="case-meta">2018 – 2020 · 宿迁日报社 / 宿迁市广播电视台 / 鲁山县电视台</p>
-        <div class="case-body">
-          <ul>
-            <li>在《宿迁日报》独立完成深度报道策划、采写与发布，与导师合作完成 10 余篇新闻稿件</li>
-            <li>参与《宿迁新闻》《楚风夜话》《直通12345》3 档栏目全流程，8 期节目制作</li>
-            <li>在鲁山县电视台跟记者上山下乡，参与脱贫攻坚系列报道</li>
-            <li>独立撰写新闻初稿、采访提纲、新闻通稿等 5000+ 字</li>
-          </ul>
-        </div>
-        <div class="case-map">
-          <strong>▶ 映射大疆：</strong>新闻通稿 &amp; Press Kit 撰写 · 主流媒体话语体系理解 · 媒体选题逻辑与记者工作方式的第一手认知
-        </div>
-      </div>
-
-    </div>
-
-    <!-- 内容创作与社交媒体 -->
-    <h3 style="font-family:var(--font-display);font-size:20px;color:var(--ink);margin-bottom:28px;margin-top:16px;">
-      内容创作 · 社交媒体
-    </h3>
-    <div class="case-grid">
-
-      <!-- 高考公益拍摄 -->
-      <div class="case-card">
-        <div class="case-figure-row">
-          <img src="images/02-视频截图/抖音策划-高考公益活动/6月7日发布.jpg" alt="高考公益活动" onerror="this.parentElement.style.display='none'">
-          <img src="images/02-视频截图/抖音策划-高考公益活动/6月11日发布 (2).jpg" alt="高考活动花絮2" onerror="this.parentElement.style.display='none'">
-          <img src="images/02-视频截图/抖音策划-高考公益活动/6月11日发布 (3).jpg" alt="高考活动花絮3" onerror="this.parentElement.style.display='none'">
-        </div>
-        <h3>"高考公益拍摄"话题营销 Campaign</h3>
-        <p class="case-meta">2023.06 · 果实摄影工作室 · 独立策划与执行</p>
-        <div class="case-body">
-          <ul>
-            <li><strong>选题洞察：</strong>高考季 = 流量高峰 + 情感共鸣窗口，"准考证"作为低门槛参与钩子</li>
-            <li><strong>创意执行：</strong>从选题策划、视觉方案到多平台分发全流程独立完成</li>
-            <li><strong>传播效果：</strong>系列视频总浏览量 5w+，带动暑期营业额提升 30%，新增客源 120+ 人</li>
-          </ul>
-        </div>
-        <div class="case-map">
-          <strong>▶ 映射：</strong>KOL/KOC Campaign 全流程 · 从选题洞察到效果复盘的闭环思维 · 内容创意与品牌目标的统一
-        </div>
-      </div>
-
-      <!-- 抖音品牌账号运营 -->
-      <div class="case-card">
-        <div class="case-figure-row">
-          <img src="images/06-数据截图/摄影工作室抖音视频数据/高考公益拍摄6月7日3w.jpg" alt="抖音数据" onerror="this.parentElement.style.display='none'">
-          <img src="images/06-数据截图/摄影工作室抖音视频数据/最帅证件照3.6w.jpg" alt="证件照数据" onerror="this.parentElement.style.display='none'">
-          <img src="images/06-数据截图/摄影工作室抖音视频数据/绿野情侣婚纱1.3w.jpg" alt="婚纱数据" onerror="this.parentElement.style.display='none'">
-        </div>
-        <h3>抖音/小红书品牌账号运营</h3>
-        <p class="case-meta">2023.03 – 2023.09 · 果实摄影工作室</p>
-        <div class="case-body">
-          <ul>
-            <li>独立完成 22 条短视频的选题、拍摄、剪辑与发布全流程</li>
-            <li>优化发布时间矩阵与封面策略，粉丝增长 40%</li>
-            <li>累计浏览 15w，单条最高浏览 3.6w</li>
-            <li>独立约拍素人模特 16 人完成 8 期主题摄影创作，客片转化率 65%，复购占比 25%</li>
-          </ul>
-        </div>
-        <div class="case-map">
-          <strong>▶ 映射：</strong>社交媒体全流程运营 · 达人内容的创作者视角 · 数据驱动的发布策略优化 · Campaign 效果监测与复盘
-        </div>
-      </div>
-
-      <!-- 小红书考研调剂 -->
-      <div class="case-card">
-        <div class="case-figure-row">
-          <img src="images/06-数据截图/小红书4篇考研复试调剂帖子数据/考研调剂笔记1.jpg" alt="调剂笔记1" onerror="this.parentElement.style.display='none'">
-          <img src="images/06-数据截图/小红书4篇考研复试调剂帖子数据/考研调剂笔记2.jpg" alt="调剂笔记2" onerror="this.parentElement.style.display='none'">
-          <img src="images/06-数据截图/小红书4篇考研复试调剂帖子数据/考研调剂笔记3.jpg" alt="调剂笔记3" onerror="this.parentElement.style.display='none'">
-        </div>
-        <h3>小红书个人账号："考研复试调剂笔记"</h3>
-        <p class="case-meta">2024.03 · 个人账号运营</p>
-        <div class="case-body">
-          <ul>
-            <li>发布"考研复试调剂经验"系列笔记 4 篇，累计浏览量达 8k</li>
-            <li>通过评论区互动与私信回复，转化咨询服务近百人</li>
-            <li>内容定位精准：抓住考研调剂窗口期的信息差需求</li>
-          </ul>
-        </div>
-        <div class="case-map">
-          <strong>▶ 映射：</strong>用户需求洞察 · 内容种草与私域转化 · 垂类社区的内容运营逻辑
-        </div>
-      </div>
-
-      <!-- 抖音个人：小城烟火气 -->
-      <div class="case-card">
-        <div class="case-figure-row">
-          <img src="images/02-视频截图/抖音作品-小城烟火气/1 .jpg" alt="小城烟火气1" onerror="this.parentElement.style.display='none'">
-          <img src="images/02-视频截图/抖音作品-小城烟火气/2.jpg" alt="小城烟火气2" onerror="this.parentElement.style.display='none'">
-          <img src="images/02-视频截图/抖音作品-小城烟火气/3.jpg" alt="小城烟火气3" onerror="this.parentElement.style.display='none'">
-        </div>
-        <h3>抖音个人账号："小城烟火气"摄影图集</h3>
-        <p class="case-meta">2024 · 个人策划 · 浏览量 1.4w</p>
-        <div class="case-body">
-          <ul>
-            <li>策划"小城烟火气"主题摄影图集，以日常生活场景为素材</li>
-            <li>通过摄影构图与配乐叙事营造怀旧情感共鸣</li>
-            <li>单期浏览量达 1.4w，印证了"真实感 + 情感共鸣"的内容逻辑</li>
-          </ul>
-        </div>
-        <div class="case-map">
-          <strong>▶ 映射：</strong>个人创作者视角 · 情感叙事驱动自然传播 · 摄影审美与内容策略的统一
-        </div>
-      </div>
-
-    </div>
-
-    <!-- 摄影作品展示 -->
-    <h3 style="font-family:var(--font-display);font-size:20px;color:var(--ink);margin-bottom:28px;margin-top:16px;">
-      摄影创作 · 视觉叙事
-    </h3>
-    <div class="case-figure-row four" style="margin-bottom: 12px;">
-      <img src="images/01-摄影作品/夏日少女1.png" alt="夏日少女" onerror="this.parentElement.style.display='none'">
-      <img src="images/01-摄影作品/玫瑰少年1.png" alt="玫瑰少年" onerror="this.parentElement.style.display='none'">
-      <img src="images/01-摄影作品/森系少年1.png" alt="森系少年" onerror="this.parentElement.style.display='none'">
-      <img src="images/01-摄影作品/高定女神写真1.png" alt="高定女神" onerror="this.parentElement.style.display='none'">
-    </div>
-    <div class="case-figure-row four" style="margin-bottom: 12px;">
-      <img src="images/01-摄影作品/少女写真1.png" alt="少女写真" onerror="this.parentElement.style.display='none'">
-      <img src="images/01-摄影作品/森系少年2.png" alt="森系少年2" onerror="this.parentElement.style.display='none'">
-      <img src="images/01-摄影作品/高定女神写真2.png" alt="高定女神2" onerror="this.parentElement.style.display='none'">
-      <img src="images/01-摄影作品/片场写真1.jpg" alt="片场写真" onerror="this.parentElement.style.display='none'">
-    </div>
-    <p style="font-size:14px;color:var(--stone);line-height:1.8;max-width:640px;">
-      8 期独立主题摄影创作，从"夏日少女"到"玫瑰少年"，每期完成选题策划 → 模特沟通 → 场景设计 → 拍摄执行 → 后期制作全流程。客片转化率 65%，复购占比 25%。<br>
-      <span style="color:var(--bronze);">▶ 映射：视觉审美判断力 · 创作者视角下的内容质量管理 · 品牌视觉调性的把控能力</span>
-    </p>
-
-    <!-- 叙事影像 -->
-    <h3 style="font-family:var(--font-display);font-size:20px;color:var(--ink);margin-bottom:28px;margin-top:64px;">
-      叙事影像 · 微电影与纪录片
-    </h3>
-
-    <!-- 善行100 — 全宽突出 -->
-    <div class="video-hero">
-      <div class="video-hero-img">
-        <img src="images/08-叙事影像/01-善行100宣传片《看见自己》/看见自己01片头.JPG" alt="善行100宣传片" onerror="this.parentElement.style.display='none'">
-      </div>
-      <div class="video-hero-text">
-        <h3>善行100 公益培训宣传片《看见自己》</h3>
-        <p class="case-meta">2017 · 导演 / 拍摄 / 剪辑</p>
-        <div class="case-body">
-          <p>
-            为中国扶贫基金会"善行100"大学生公益劝募项目制作志愿者培训宣传片。独立完成选题策划、脚本撰写、实地拍摄与后期剪辑全流程。
-          </p>
-          <p style="margin-top:12px;">
-            <strong>作品被中国扶贫基金会采纳，纳入"善行100"全国高校培训官方素材库，在 100+ 所高校志愿者培训中规模化复用。</strong>
-          </p>
-        </div>
-        <div class="case-map" style="margin-top:16px;">
-          <strong>▶ 品牌传播启示：</strong>我第一次体验"品牌内容 × 第三方传播"的力量。一条好的品牌内容不需要自己花钱推——当它解决了合作方的真实需求，它就自己长腿跑进全国的教室。这就是"沉淀第三方传播方法论与品牌叙事素材"的最早实践。
+      <div class="edu-item">
+        <h4>中国矿业大学</h4>
+        <p class="edu-meta">广播电视学 · 学士 · 2016.09 – 2020.06</p>
+        <p>
+          GPA 前 10%。江苏省微电影评选二等奖、徐州市金紫薇微电影大赛二等奖。优秀学生干部、校级二等奖学金。
+        </p>
+        <div class="edu-tags">
+          <span class="edu-tag">GPA 前 10%</span>
+          <span class="edu-tag">省级微电影二等奖</span>
+          <span class="edu-tag">优秀学生干部</span>
         </div>
       </div>
     </div>
-
-    <!-- 微电影 + 毕业设计 — 并排 -->
-    <div class="video-grid">
-      <div class="case-card" style="border-top:none;padding-top:0;">
-        <div class="case-figure">
-          <img src="images/08-叙事影像/02-长大后我就成为了你/长大后我就成了你01介绍支教老师.JPG" alt="长大后我就成为了你" onerror="this.parentElement.style.display='none'">
-        </div>
-        <h3>《长大后我就成为了你》</h3>
-        <p class="case-meta">2019 · 导演 / 拍摄 / 剪辑 · 江苏省微电影评选二等奖</p>
-        <div class="case-body">
-          <p>
-            一个横跨十年的真实故事。矿大支教团深入乡村小学，黑板前的那个身影，让一个小学生决定考矿大。后来她真的去了。两条时间线交叉叙事——不靠旁白，画面自己说话。
-          </p>
-        </div>
-        <div class="case-map">
-          <strong>▶ 品牌传播启示：</strong>最好的品牌故事不是"我们多厉害"，而是"因为我们的存在，有人的人生被改变了"。这个叙事逻辑就是所有伟大品牌纪录短片的底层语法。
-        </div>
-      </div>
-
-      <div class="case-card" style="border-top:none;padding-top:0;">
-        <div class="case-figure">
-          <img src="images/08-叙事影像/03-2020毕业图鉴/2020毕业图鉴01片头显示.JPG" alt="2020毕业图鉴" onerror="this.parentElement.style.display='none'">
-        </div>
-        <h3>《2020毕业图鉴》</h3>
-        <p class="case-meta">2020 · 导演 / 拍摄 / 剪辑 · 本科优秀毕业设计</p>
-        <div class="case-body">
-          <p>
-            2020 年春天，疫情让一切戛然而止。这部微纪录片跟踪记录了多位矿大 2020 届毕业生——被困在家里的、在实验室隔离的、在云端答辩的。没有宏大叙事，只有普通人在特殊年份里的真实表情。
-          </p>
-        </div>
-        <div class="case-map">
-          <strong>▶ 品牌传播启示：</strong>传播的本质不是"制造内容"，而是捕捉真实世界中已经存在的动人瞬间。这是所有影像产品的底层品牌逻辑——记录真实的工具。我理解这种逻辑，因为我用过它。
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
 <!-- ============================================================
-     Research — 论文与研究（调整至经历之前）
+     Case Studies
+     ============================================================ -->
+<section class="reveal" id="cases">
+  <div class="container">
+    <span class="section-label">精选案例</span>
+    <h2 class="section-title">品牌传播实践</h2>
+
+    <div class="case-list">
+
+      <!-- Case 1: 车展品牌活动 -->
+      <div class="case-item">
+        <div class="case-media cover">
+          <img src="images/04-活动照片/武汉美好车展1.png" alt="武汉国际车展品牌活动" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="case-content">
+          <span class="case-tag">品牌公关</span>
+          <span class="case-tag">媒体关系</span>
+          <h3>武汉国际车展品牌活动执行</h3>
+          <p class="case-meta">2025.09 – 2026.03 · 武汉星空之旅</p>
+          <div class="case-body">
+            <ul>
+              <li>参与 5 场线下品牌活动，负责展区陈列方案制定、现场协调与品牌露出把控</li>
+              <li>登记意向客户 130+，完成现场品牌引流与客户转化</li>
+              <li>配合武汉文旅集团完成多利益相关方协同执行</li>
+              <li>对接湖北日报传媒集团，维护企业媒体关系库，策划荣誉二次传播</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 2: 高考公益拍摄 -->
+      <div class="case-item">
+        <div class="case-media-grid">
+          <img src="images/02-视频截图/抖音策划-高考公益活动/6月7日发布.jpg" alt="高考公益拍摄" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/02-视频截图/抖音策划-高考公益活动/6月11日发布 (2).jpg" alt="高考活动花絮2" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/02-视频截图/抖音策划-高考公益活动/6月11日发布 (3).jpg" alt="高考活动花絮3" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/02-视频截图/抖音策划-高考公益活动/6月11日发布（1）.jpg" alt="高考活动花絮1" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="case-content">
+          <span class="case-tag">内容策划</span>
+          <span class="case-tag">社交媒体</span>
+          <h3>"高考公益拍摄"话题营销 Campaign</h3>
+          <p class="case-meta">2023.06 · 果实摄影工作室 · 独立策划与执行</p>
+          <div class="case-body">
+            <ul>
+              <li>洞察高考季流量高峰与情感共鸣窗口，以"准考证"为低门槛参与钩子</li>
+              <li>独立完成选题策划、视觉方案与多平台分发全流程</li>
+              <li>系列视频总浏览量 5w+，带动暑期营业额提升 30%，新增客源 120+ 人</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 3: 账号运营 -->
+      <div class="case-item">
+        <div class="case-media-grid">
+          <img src="images/06-数据截图/摄影工作室抖音视频数据/高考公益拍摄6月7日3w.jpg" alt="抖音数据" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/06-数据截图/摄影工作室抖音视频数据/最帅证件照3.6w.jpg" alt="证件照数据" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/06-数据截图/摄影工作室抖音视频数据/绿野情侣婚纱1.3w.jpg" alt="婚纱数据" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/06-数据截图/摄影工作室抖音视频数据/高考公益拍摄6月8日3w.jpg" alt="抖音数据2" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="case-content">
+          <span class="case-tag">账号运营</span>
+          <span class="case-tag">数据分析</span>
+          <h3>抖音/小红书品牌账号运营</h3>
+          <p class="case-meta">2023.03 – 2023.09 · 果实摄影工作室</p>
+          <div class="case-body">
+            <ul>
+              <li>独立完成 22 条短视频的选题、拍摄、剪辑与发布全流程</li>
+              <li>优化发布时间矩阵与封面策略，实现粉丝增长 40%</li>
+              <li>累计浏览 15w，单条最高浏览 3.6w</li>
+              <li>独立约拍素人模特 16 人完成 8 期主题摄影创作，客片转化率 65%，复购占比 25%</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 4: 小红书考研调剂 -->
+      <div class="case-item">
+        <div class="case-media-grid">
+          <img src="images/06-数据截图/小红书4篇考研复试调剂帖子数据/考研调剂笔记1.jpg" alt="调剂笔记1" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/06-数据截图/小红书4篇考研复试调剂帖子数据/考研调剂笔记2.jpg" alt="调剂笔记2" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/06-数据截图/小红书4篇考研复试调剂帖子数据/考研调剂笔记3.jpg" alt="调剂笔记3" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/06-数据截图/小红书4篇考研复试调剂帖子数据/考研调剂笔记4.jpg" alt="调剂笔记4" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="case-content">
+          <span class="case-tag">个人账号</span>
+          <span class="case-tag">内容转化</span>
+          <h3>小红书个人账号："考研复试调剂笔记"</h3>
+          <p class="case-meta">2024.03 · 个人策划与运营</p>
+          <div class="case-body">
+            <ul>
+              <li>发布"考研复试调剂经验"系列笔记 4 篇，累计浏览量达 8k</li>
+              <li>通过评论区互动与私信回复，转化咨询服务近百人</li>
+              <li>内容定位精准：抓住考研调剂窗口期的信息差需求</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 5: 抖音小城烟火气 -->
+      <div class="case-item">
+        <div class="case-media-grid">
+          <img src="images/02-视频截图/抖音作品-小城烟火气/1 .jpg" alt="小城烟火气1" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/02-视频截图/抖音作品-小城烟火气/2.jpg" alt="小城烟火气2" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/02-视频截图/抖音作品-小城烟火气/3.jpg" alt="小城烟火气3" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/02-视频截图/抖音作品-小城烟火气/4.jpg" alt="小城烟火气4" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="case-content">
+          <span class="case-tag">个人账号</span>
+          <span class="case-tag">摄影创作</span>
+          <h3>抖音个人账号："小城烟火气"摄影图集</h3>
+          <p class="case-meta">2024 · 个人策划 · 浏览量 1.4w</p>
+          <div class="case-body">
+            <ul>
+              <li>策划"小城烟火气"主题摄影图集，以日常生活场景为素材</li>
+              <li>通过摄影构图与配乐叙事营造怀旧情感共鸣</li>
+              <li>单期浏览量达 1.4w，印证了"真实感 + 情感共鸣"驱动自然传播的内容逻辑</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 6: 叙事影像 -->
+      <div class="case-item">
+        <div class="case-media cover">
+          <img src="images/08-叙事影像/01-善行100宣传片《看见自己》/看见自己01片头.JPG" alt="善行100公益宣传片" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="case-content">
+          <span class="case-tag">叙事影像</span>
+          <span class="case-tag">公益传播</span>
+          <h3>善行100 公益培训宣传片《看见自己》</h3>
+          <p class="case-meta">2017 · 导演 / 拍摄 / 剪辑</p>
+          <div class="case-body">
+            <ul>
+              <li>为中国扶贫基金会"善行100"项目制作志愿者培训宣传片</li>
+              <li>独立完成选题策划、脚本撰写、实地拍摄与后期剪辑全流程</li>
+              <li><strong>作品被纳入全国高校培训官方素材库，在 100+ 所高校规模化复用</strong></li>
+              <li>另有两部影像作品：江苏省微电影评选二等奖《长大后我就成为了你》、本科优秀毕设《2020毕业图鉴》</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Research — 研究置前
      ============================================================ -->
 <section class="research-section reveal" id="research">
   <div class="container">
-    <span class="section-label">研究与论文</span>
-    <h2 class="section-title">学术训练 · 分析方法论</h2>
+    <span class="section-label">研究与学术</span>
+    <h2 class="section-title">调研与论文</h2>
     <div class="research-grid">
 
       <div class="research-card">
         <div class="research-img">
-          <img src="images/07-调研报告/01茶产业调研报告ppt.png" alt="茶产业调研报告" onerror="this.parentElement.style.display='none'">
+          <img src="images/07-调研报告/01茶产业调研报告ppt.png" alt="茶产业调研报告" loading="lazy" onerror="this.style.display='none'">
         </div>
         <h3>"茶文旅融合助推乡村振兴"调研报告</h3>
         <p class="research-meta">项目负责人 · 挑战杯校一等奖 · 获镇政府官方采纳函</p>
         <p>
-          统筹 6 人跨学科团队赴湖北恩施白杨坪镇开展 5 天田野调查。设计双版本问卷与 7 套深度访谈提纲，覆盖 8 类利益相关方。完成 1316 份有效问卷的 SPSS 信效度分析（Cronbach's α=0.718）与 Nvivo 质性编码。独立撰写 2.3 万字调研报告，提炼的发展模式获政府采纳，被 2025 中国旅游高质量发展创新论坛录用作专题汇报，获《大学生云报》报道。
+          统筹 6 人跨学科团队赴湖北恩施白杨坪镇开展 5 天田野调查。完成 1316 份有效问卷的 SPSS 信效度分析与 Nvivo 质性编码，独立撰写 2.3 万字调研报告，成果获政府采纳并被 2025 中国旅游高质量发展创新论坛录用。
         </p>
       </div>
 
       <div class="research-card">
         <div class="research-img">
-          <img src="images/07-调研报告/02罕见病研究.png" alt="罕见病研究" onerror="this.parentElement.style.display='none'">
+          <img src="images/07-调研报告/02罕见病研究.png" alt="罕见病研究" loading="lazy" onerror="this.style.display='none'">
         </div>
-        <h3>健康叙事视角下罕见病患者社交媒体的疾病表达</h3>
+        <h3>健康叙事视角下罕见病患者社交媒体表达</h3>
         <p class="research-meta">2024 媒介文化论坛三等奖 · 中国新闻史学会主办</p>
         <p>
-          以微信公众号"NMO上海之家"患者自述文本为研究对象，运用健康叙事框架对社交媒体上的疾病表达进行四维分类（疾病叙事/生活叙事/社会支持叙事/情绪表达叙事），识别患者身份建构策略与隐喻使用规律。展示了社交媒体文本结构化叙事分析的方法论能力，与品牌传播中的用户心智洞察和内容策略分析具有方法论共通性。
+          以微信公众号"NMO上海之家"患者自述文本为研究对象，运用健康叙事框架进行四维分类，识别患者身份建构策略与隐喻使用规律。展示了社交媒体文本结构化叙事分析的方法论能力。
         </p>
       </div>
 
       <div class="research-card">
-        <h3>脱嵌与重塑：第三场所视角下青年夜校作为空间媒介的实践考察</h3>
+        <h3>脱嵌与重塑：第三场所视角下青年夜校实践考察</h3>
         <p class="research-meta">校级优秀毕业论文</p>
         <p>
-          聚焦 2023 年全国"夜校潮"现象，以武汉市青年夜校为调研对象，运用参与式观察与深度访谈法（访谈 30+ 人），探讨青年在数字化"附近消失"后如何通过夜校实现社会连接的再嵌入。展示了社会趋势捕捉、田野调查执行与质性研究的系统训练。
+          聚焦 2023 年全国"夜校潮"现象，以武汉市青年夜校为调研对象，运用参与式观察与深度访谈法（访谈 30+ 人），探讨青年在数字化"附近消失"后的社会连接再嵌入。
         </p>
       </div>
 
       <div class="research-card">
         <div class="research-img">
-          <img src="images/07-调研报告/01茶产业调研报告回复函.png" alt="茶产业回复函" onerror="this.parentElement.style.display='none'">
+          <img src="images/07-调研报告/01茶产业调研报告回复函.png" alt="茶产业回复函" loading="lazy" onerror="this.style.display='none'">
         </div>
         <h3>调研成果与学术认可</h3>
         <p class="research-meta">政府采纳 · 学术论坛 · 荣誉证书</p>
         <p>
-          茶产业调研成果获白杨坪镇政府官方采纳函，直接推动了当地龙赶湖景区研学楼建设与康养设施升级。罕见病论文在 2024 媒介文化论坛作现场汇报。夜校调研向武汉市委相关部门提交了访谈分析报告。学术研究不只是纸上论文——它真实地影响过政策、推动过建设、帮助过决策。
+          茶产业调研成果获白杨坪镇政府官方采纳函，推动当地研学楼建设与康养设施升级。罕见病论文在 2024 媒介文化论坛作现场汇报。夜校调研向武汉市委相关部门提交访谈分析报告。
         </p>
-        <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;">
-          <img src="images/05-获奖证书/2024年媒介文化论坛学术会议论文获奖证书.pdf" alt="论坛证书" style="max-width:48%;border-radius:2px;" onerror="this.style.display='none'">
-          <img src="images/05-获奖证书/优秀毕业论文证书.jpg" alt="优秀论文证书" style="max-width:48%;border-radius:2px;" onerror="this.style.display='none'">
-        </div>
       </div>
 
     </div>
@@ -1190,50 +1216,14 @@ section { padding: var(--gap-section) 0; }
 </section>
 
 <!-- ============================================================
-     Experience — 完整时间线
+     Experience
      ============================================================ -->
 <section class="reveal" id="experience">
   <div class="container">
     <span class="section-label">经历</span>
-    <h2 class="section-title">完整时间线</h2>
+    <h2 class="section-title">工作与实习</h2>
 
-    <div class="timeline-group">
-      <div class="timeline-group-title">教育</div>
-
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <span class="date">2023.09 – 2026.06</span>
-          <span class="org">武汉体育学院</span>
-          <span class="role">新闻传播学 · 硕士</span>
-        </div>
-        <div class="timeline-body">
-          <ul>
-            <li>研究方向：青年社交与空间传播、健康传播与社交媒体叙事分析</li>
-            <li>GPA 专业第一，一等研究生学业奖学金</li>
-            <li>校优秀毕业生、校优秀毕业论文</li>
-            <li>2024 媒介文化论坛三等奖、挑战杯校一等奖</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <span class="date">2016.09 – 2020.06</span>
-          <span class="org">中国矿业大学</span>
-          <span class="role">广播电视学 · 学士</span>
-        </div>
-        <div class="timeline-body">
-          <ul>
-            <li>GPA 前 10%</li>
-            <li>江苏省微电影评选二等奖、徐州市金紫薇微电影大赛二等奖</li>
-            <li>优秀学生干部、校级二等奖学金</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="timeline-group">
-      <div class="timeline-group-title">实习</div>
+    <div class="timeline">
 
       <div class="timeline-item">
         <div class="timeline-meta">
@@ -1289,7 +1279,6 @@ section { padding: var(--gap-section) 0; }
           <ul>
             <li>参与《宿迁新闻》《楚风夜话》《直通12345》3 档栏目全流程</li>
             <li>独立撰写新闻初稿 3 篇（2 篇播出），新闻通稿 5000+ 字</li>
-            <li>累计参与 8 期节目制作，获"优秀实习生"</li>
           </ul>
         </div>
       </div>
@@ -1308,80 +1297,107 @@ section { padding: var(--gap-section) 0; }
         </div>
       </div>
 
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <span class="date">2016 – 2019</span>
-          <span class="org">鲁山县电视台</span>
-          <span class="role">寒暑假实习记者</span>
-        </div>
-        <div class="timeline-body">
-          <ul>
-            <li>连续三年寒暑假跟记者上山下乡，参与脱贫攻坚系列报道</li>
-            <li>协助完成新闻素材采集、采访提纲梳理与文稿整理</li>
-          </ul>
-        </div>
-      </div>
     </div>
-
-    <div class="timeline-group">
-      <div class="timeline-group-title">校园</div>
-
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <span class="date">2017.09 – 2019.06</span>
-          <span class="org">中国矿业大学广播台 / 媒体中心</span>
-          <span class="role">负责人</span>
-        </div>
-        <div class="timeline-body">
-          <ul>
-            <li>策划录制《对话脸庞》《溪水论坛》视频节目共 18 期</li>
-            <li>独立向石油公司申请赞助，成功募集 8000 元经费</li>
-            <li>为"善行100"制作培训宣传片，被中国扶贫基金会纳入全国培训素材库</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <span class="date">2018.09 – 2019.06</span>
-          <span class="org">新长城矿大自强社</span>
-          <span class="role">社长</span>
-        </div>
-        <div class="timeline-body">
-          <ul>
-            <li>作为中国扶贫基金会"善行100"高校负责人，统筹超 1000 人次参与</li>
-            <li>三年从志愿者成长为负责人，累计劝募近 20 万元，700 个爱心包裹</li>
-            <li>社团获评基金会"优秀团体"</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
 <!-- ============================================================
-     Data Highlights
+     Honors & Certificates
      ============================================================ -->
-<section class="data-section reveal">
+<section class="reveal">
   <div class="container">
-    <span class="section-label" style="color:var(--bronze-light);">关键数据</span>
-    <div class="data-grid">
-      <div class="data-item">
-        <span class="data-number">1316<span class="data-unit">份</span></span>
-        <p class="data-label">有效问卷 SPSS 信效度分析</p>
+    <span class="section-label">荣誉与证书</span>
+    <h2 class="section-title">获奖记录</h2>
+
+    <div class="honors-list">
+      <span>2024 媒介文化论坛三等奖</span>
+      <span>挑战杯校一等奖</span>
+      <span>江苏省微电影评选二等奖</span>
+      <span>校优秀毕业论文</span>
+      <span>校优秀毕业生</span>
+      <span>徐州市影视技能技术能手</span>
+    </div>
+
+    <div class="certs-grid">
+      <div class="cert-item">
+        <img src="images/05-获奖证书/挑战杯一等奖.jpg" alt="挑战杯一等奖" loading="lazy" onerror="this.style.display='none'">
       </div>
-      <div class="data-item">
-        <span class="data-number">23<span class="data-unit">万字</span></span>
-        <p class="data-label">累计调研报告与论文撰写</p>
+      <div class="cert-item">
+        <img src="images/05-获奖证书/校三好学生.jpg" alt="三好学生" loading="lazy" onerror="this.style.display='none'">
       </div>
-      <div class="data-item">
-        <span class="data-number">15<span class="data-unit">万</span></span>
-        <p class="data-label">抖音视频累计浏览量</p>
+      <div class="cert-item">
+        <img src="images/05-获奖证书/2024年媒介文化论坛学术会议论文获奖证书.pdf" alt="论坛证书" loading="lazy" onerror="this.style.display='none'">
       </div>
-      <div class="data-item">
-        <span class="data-number">5<span class="data-unit">场</span></span>
-        <p class="data-label">线下品牌活动统筹执行</p>
+      <div class="cert-item">
+        <img src="images/05-获奖证书/优秀毕业论文证书.jpg" alt="优秀毕业论文证书" loading="lazy" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Skills
+     ============================================================ -->
+<section class="reveal">
+  <div class="container">
+    <span class="section-label">技能与工具</span>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h4>内容创作</h4>
+        <div class="skill-item">
+          <div class="skill-name"><span>新闻写作</span><span class="skill-level-text">熟练</span></div>
+          <div class="skill-bar"><div class="skill-level" style="width:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>脚本策划</span><span class="skill-level-text">熟练</span></div>
+          <div class="skill-bar"><div class="skill-level" style="width:85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>短视频制作</span><span class="skill-level-text">熟练</span></div>
+          <div class="skill-bar"><div class="skill-level" style="width:88%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>摄影</span><span class="skill-level-text">熟练</span></div>
+          <div class="skill-bar"><div class="skill-level" style="width:85%"></div></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>数据分析</h4>
+        <div class="skill-item">
+          <div class="skill-name"><span>SPSS</span><span class="skill-level-text">熟练</span></div>
+          <div class="skill-bar"><div class="skill-level" style="width:85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Nvivo</span><span class="skill-level-text">掌握</span></div>
+          <div class="skill-bar"><div class="skill-level" style="width:75%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>问卷设计</span><span class="skill-level-text">熟练</span></div>
+          <div class="skill-bar"><div class="skill-level" style="width:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>竞品分析</span><span class="skill-level-text">掌握</span></div>
+          <div class="skill-bar"><div class="skill-level" style="width:80%"></div></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>设计与剪辑</h4>
+        <div class="skill-item">
+          <div class="skill-name"><span>Photoshop</span><span class="skill-level-text">熟练</span></div>
+          <div class="skill-bar"><div class="skill-level" style="width:85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Premiere</span><span class="skill-level-text">掌握</span></div>
+          <div class="skill-bar"><div class="skill-level" style="width:78%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>剪映</span><span class="skill-level-text">熟练</span></div>
+          <div class="skill-bar"><div class="skill-level" style="width:92%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>排版设计</span><span class="skill-level-text">掌握</span></div>
+          <div class="skill-bar"><div class="skill-level" style="width:80%"></div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1395,12 +1411,15 @@ section { padding: var(--gap-section) 0; }
     <div class="contact-inner">
       <div class="contact-info">
         <span class="section-label">联系</span>
-        <h2>期待与你交流</h2>
+        <h2>期待与您进一步交流</h2>
         <p>
-          求职方向：品牌公关、市场策划、企业传播<br><br>
-          如果你在找一个懂媒体话语体系、能写新闻通稿、能运营社交媒体、也能用数据分析传播效果的品牌传播人——欢迎联系。<br><br>
-          <strong style="color:var(--ink);">即日到岗深圳。</strong>
+          如果您正在寻找具备媒体话语体系理解、内容策划执行与数据分析能力的品牌传播从业者，欢迎通过以下方式联系。
         </p>
+        <div class="contact-intent">
+          <span><strong>求职方向</strong>　品牌公关 / 市场策划 / 企业传播</span>
+          <span><strong>工作城市</strong>　深圳</span>
+          <span><strong>到岗时间</strong>　随时</span>
+        </div>
       </div>
       <div class="contact-details">
         <div class="contact-item">
