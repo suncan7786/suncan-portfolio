@@ -528,6 +528,27 @@ section { padding: var(--gap-section) 0; }
   height: 100%;
   object-fit: cover;
 }
+.case-media-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.case-media-single {
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--mist);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 200px;
+}
+.case-media-single img {
+  max-width: 100%;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
 
 .case-content h3 {
   font-size: 20px;
@@ -576,6 +597,55 @@ section { padding: var(--gap-section) 0; }
   }
   .case-item:nth-child(even) .case-media { order: 0; }
   .case-item:nth-child(even) .case-content { order: 1; }
+}
+
+/* ============================================================
+   Photography Grid
+   ============================================================ */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.photo-item {
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--mist);
+  aspect-ratio: 3 / 4;
+  position: relative;
+}
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+.photo-item:hover img {
+  transform: scale(1.05);
+}
+.photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--paper);
+  background: linear-gradient(transparent, rgba(20, 24, 30, 0.7));
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+}
+.photo-note {
+  text-align: center;
+  font-size: 14px;
+  color: var(--bronze);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .photo-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
 }
 
 /* ============================================================
@@ -663,6 +733,21 @@ section { padding: var(--gap-section) 0; }
   width: auto;
   height: auto;
   object-fit: contain;
+}
+.research-imgs-secondary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 16px;
+}
+.research-imgs-secondary img {
+  max-width: 100%;
+  max-height: 180px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 2px;
+  background: var(--mist-light);
 }
 .research-card h3 {
   font-size: 17px;
@@ -1024,8 +1109,11 @@ section { padding: var(--gap-section) 0; }
 
       <!-- Case 1: 车展品牌活动 -->
       <div class="case-item">
-        <div class="case-media cover">
+        <div class="case-media-grid">
           <img src="images/04-活动照片/武汉美好车展1.png" alt="武汉国际车展品牌活动" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/04-活动照片/武汉美好车展2.png" alt="武汉车展现场2" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/04-活动照片/武汉美好车展3.png" alt="武汉车展现场3" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/04-活动照片/武汉美好车展1.png" alt="武汉车展超跑展区" loading="lazy" onerror="this.style.display='none'">
         </div>
         <div class="case-content">
           <span class="case-tag">品牌公关</span>
@@ -1115,11 +1203,16 @@ section { padding: var(--gap-section) 0; }
 
       <!-- Case 5: 抖音小城烟火气 -->
       <div class="case-item">
-        <div class="case-media-grid">
-          <img src="images/02-视频截图/抖音作品-小城烟火气/1.jpg" alt="小城烟火气1" loading="lazy" onerror="this.style.display='none'">
-          <img src="images/02-视频截图/抖音作品-小城烟火气/2.jpg" alt="小城烟火气2" loading="lazy" onerror="this.style.display='none'">
-          <img src="images/02-视频截图/抖音作品-小城烟火气/3.jpg" alt="小城烟火气3" loading="lazy" onerror="this.style.display='none'">
-          <img src="images/02-视频截图/抖音作品-小城烟火气/4.jpg" alt="小城烟火气4" loading="lazy" onerror="this.style.display='none'">
+        <div class="case-media-stack">
+          <div class="case-media-grid">
+            <img src="images/02-视频截图/抖音作品-小城烟火气/1.jpg" alt="小城烟火气1" loading="lazy" onerror="this.style.display='none'">
+            <img src="images/02-视频截图/抖音作品-小城烟火气/2.jpg" alt="小城烟火气2" loading="lazy" onerror="this.style.display='none'">
+            <img src="images/02-视频截图/抖音作品-小城烟火气/3.jpg" alt="小城烟火气3" loading="lazy" onerror="this.style.display='none'">
+            <img src="images/02-视频截图/抖音作品-小城烟火气/4.jpg" alt="小城烟火气4" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <div class="case-media-single">
+            <img src="images/06-数据截图/小城烟火气摄影作品抖音数据1.4w.jpg" alt="小城烟火气抖音数据1.4w" loading="lazy" onerror="this.style.display='none'">
+          </div>
         </div>
         <div class="case-content">
           <span class="case-tag">个人账号</span>
@@ -1136,10 +1229,18 @@ section { padding: var(--gap-section) 0; }
         </div>
       </div>
 
-      <!-- Case 6: 叙事影像 -->
+      <!-- Case 6: 善行100 宣传片 -->
       <div class="case-item">
-        <div class="case-media cover">
-          <img src="images/08-叙事影像/01-善行100宣传片《看见自己》/看见自己01片头.JPG" alt="善行100公益宣传片" loading="lazy" onerror="this.style.display='none'">
+        <div class="case-media-stack">
+          <div class="case-media-grid">
+            <img src="images/08-叙事影像/01-善行100宣传片《看见自己》/看见自己01片头.JPG" alt="善行100片头" loading="lazy" onerror="this.style.display='none'">
+            <img src="images/08-叙事影像/01-善行100宣传片《看见自己》/看见自己02劝募准备.JPG" alt="劝募准备" loading="lazy" onerror="this.style.display='none'">
+            <img src="images/08-叙事影像/01-善行100宣传片《看见自己》/看见自己03劝募进行中.JPG" alt="劝募进行中" loading="lazy" onerror="this.style.display='none'">
+            <img src="images/08-叙事影像/01-善行100宣传片《看见自己》/看见自己04劝募合照.JPG" alt="劝募合照" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <div class="case-media-single">
+            <img src="images/08-叙事影像/01-善行100宣传片《看见自己》/看见自己05劝募结束女主角被采访.JPG" alt="女主角采访" loading="lazy" onerror="this.style.display='none'">
+          </div>
         </div>
         <div class="case-content">
           <span class="case-tag">叙事影像</span>
@@ -1151,13 +1252,103 @@ section { padding: var(--gap-section) 0; }
               <li>为中国扶贫基金会"善行100"项目制作志愿者培训宣传片</li>
               <li>独立完成选题策划、脚本撰写、实地拍摄与后期剪辑全流程</li>
               <li><strong>作品被纳入全国高校培训官方素材库，在 100+ 所高校规模化复用</strong></li>
-              <li>另有两部影像作品：江苏省微电影评选二等奖《长大后我就成为了你》、本科优秀毕设《2020毕业图鉴》</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 7: 微电影《长大后我就成为了你》 -->
+      <div class="case-item">
+        <div class="case-media-grid">
+          <img src="images/08-叙事影像/02-长大后我就成为了你/长大后我就成了你01介绍支教老师.JPG" alt="介绍支教老师" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/08-叙事影像/02-长大后我就成为了你/长大后我就成了你02支教学校教室.JPG" alt="支教学校教室" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/08-叙事影像/02-长大后我就成为了你/长大后我就成了你03贫困生男主角小时候.JPG" alt="贫困生男主角" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/08-叙事影像/02-长大后我就成为了你/长大后我就成了你贫困生男主角长大后考入大学.JPG" alt="男主角考入大学" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="case-content">
+          <span class="case-tag">叙事影像</span>
+          <span class="case-tag">微电影</span>
+          <h3>江苏省微电影评选二等奖《长大后我就成为了你》</h3>
+          <p class="case-meta">2018 · 导演 / 编剧 / 拍摄 / 剪辑</p>
+          <div class="case-body">
+            <ul>
+              <li>以乡村支教教师为原型，讲述贫困学生受支教老师影响、最终考入大学的真实故事</li>
+              <li>独立完成剧本创作、分镜设计、实地拍摄与后期剪辑全流程</li>
+              <li>获江苏省资助类微电影评选二等奖，徐州市金紫薇微电影大赛二等奖</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 8: 毕设《2020毕业图鉴》 -->
+      <div class="case-item">
+        <div class="case-media-grid">
+          <img src="images/08-叙事影像/03-2020毕业图鉴/2020毕业图鉴01片头显示.JPG" alt="毕业图鉴片头" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/08-叙事影像/03-2020毕业图鉴/2020毕业图鉴02采访对象马飞.JPG" alt="采访马飞" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/08-叙事影像/03-2020毕业图鉴/2020毕业图鉴03采访对象王书戎.JPG" alt="采访王书戎" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/08-叙事影像/03-2020毕业图鉴/2020毕业图鉴04采访对象王子扬.JPG" alt="采访王子扬" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="case-content">
+          <span class="case-tag">叙事影像</span>
+          <span class="case-tag">纪录片</span>
+          <h3>本科优秀毕设《2020毕业图鉴》</h3>
+          <p class="case-meta">2020 · 导演 / 拍摄 / 剪辑 · 中国矿业大学广播电视学</p>
+          <div class="case-body">
+            <ul>
+              <li>以"疫情下的毕业季"为背景，记录 5 位不同专业毕业生的真实故事与选择</li>
+              <li>运用纪实访谈与跟拍手法，呈现特殊年份下青年的迷茫、坚韧与成长</li>
+              <li>获评校级优秀毕业设计，展映期间引发师生广泛共鸣</li>
             </ul>
           </div>
         </div>
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     摄影作品展示
+     ============================================================ -->
+<section class="reveal">
+  <div class="container">
+    <span class="section-label">摄影作品</span>
+    <h2 class="section-title">主题摄影创作</h2>
+    <div class="photo-grid">
+      <div class="photo-item">
+        <img src="images/01-摄影作品/高定女神写真1.png" alt="高定女神写真" loading="lazy" onerror="this.style.display='none'">
+        <span class="photo-caption">高定女神写真</span>
+      </div>
+      <div class="photo-item">
+        <img src="images/01-摄影作品/高定女神写真2.png" alt="高定女神写真" loading="lazy" onerror="this.style.display='none'">
+        <span class="photo-caption">高定女神写真</span>
+      </div>
+      <div class="photo-item">
+        <img src="images/01-摄影作品/玫瑰少年1.png" alt="玫瑰少年" loading="lazy" onerror="this.style.display='none'">
+        <span class="photo-caption">玫瑰少年</span>
+      </div>
+      <div class="photo-item">
+        <img src="images/01-摄影作品/森系少年1.png" alt="森系少年" loading="lazy" onerror="this.style.display='none'">
+        <span class="photo-caption">森系少年</span>
+      </div>
+      <div class="photo-item">
+        <img src="images/01-摄影作品/森系少年2.png" alt="森系少年" loading="lazy" onerror="this.style.display='none'">
+        <span class="photo-caption">森系少年</span>
+      </div>
+      <div class="photo-item">
+        <img src="images/01-摄影作品/夏日少女1.png" alt="夏日少女" loading="lazy" onerror="this.style.display='none'">
+        <span class="photo-caption">夏日少女</span>
+      </div>
+      <div class="photo-item">
+        <img src="images/01-摄影作品/少女写真1.png" alt="少女写真" loading="lazy" onerror="this.style.display='none'">
+        <span class="photo-caption">少女写真</span>
+      </div>
+      <div class="photo-item">
+        <img src="images/01-摄影作品/片场写真1.jpg" alt="片场写真" loading="lazy" onerror="this.style.display='none'">
+        <span class="photo-caption">片场写真</span>
+      </div>
+    </div>
+    <p class="photo-note">独立约拍素人模特 16 人，完成 8 期主题摄影创作，客片转化率 65%，复购占比 25%</p>
   </div>
 </section>
 
@@ -1179,6 +1370,10 @@ section { padding: var(--gap-section) 0; }
         <p>
           统筹 6 人跨学科团队赴湖北恩施白杨坪镇开展 5 天田野调查。完成 1316 份有效问卷的 SPSS 信效度分析与 Nvivo 质性编码，独立撰写 2.3 万字调研报告，成果获政府采纳并被 2025 中国旅游高质量发展创新论坛录用。
         </p>
+        <div class="research-imgs-secondary">
+          <img src="images/07-调研报告/01茶产业调研申报书封面.png" alt="申报书封面" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/07-调研报告/01茶产业调研申报书内页.png" alt="申报书内页" loading="lazy" onerror="this.style.display='none'">
+        </div>
       </div>
 
       <div class="research-card">
@@ -1209,6 +1404,10 @@ section { padding: var(--gap-section) 0; }
         <p>
           茶产业调研成果获白杨坪镇政府官方采纳函，推动当地研学楼建设与康养设施升级。罕见病论文在 2024 媒介文化论坛作现场汇报。夜校调研向武汉市委相关部门提交访谈分析报告。
         </p>
+        <div class="research-imgs-secondary">
+          <img src="images/05-获奖证书/2024年媒介文化论坛学术会议论文获奖证书.pdf" alt="论坛证书" loading="lazy" onerror="this.style.display='none'">
+          <img src="images/05-获奖证书/优秀毕业论文.jpg" alt="优秀毕业论文证书" loading="lazy" onerror="this.style.display='none'">
+        </div>
       </div>
 
     </div>
@@ -1320,16 +1519,13 @@ section { padding: var(--gap-section) 0; }
 
     <div class="certs-grid">
       <div class="cert-item">
-        <img src="images/05-获奖证书/挑战杯一等奖.jpg" alt="挑战杯一等奖" loading="lazy" onerror="this.style.display='none'">
+        <img src="images/05-获奖证书/优秀毕业生.jpg" alt="优秀毕业生" loading="lazy" onerror="this.style.display='none'">
       </div>
       <div class="cert-item">
         <img src="images/05-获奖证书/校三好学生.jpg" alt="三好学生" loading="lazy" onerror="this.style.display='none'">
       </div>
       <div class="cert-item">
-        <img src="images/05-获奖证书/优秀毕业生.jpg" alt="优秀毕业生" loading="lazy" onerror="this.style.display='none'">
-      </div>
-      <div class="cert-item">
-        <img src="images/05-获奖证书/优秀毕业论文.jpg" alt="优秀毕业论文" loading="lazy" onerror="this.style.display='none'">
+        <img src="images/05-获奖证书/挑战杯一等奖.jpg" alt="挑战杯一等奖" loading="lazy" onerror="this.style.display='none'">
       </div>
     </div>
   </div>
