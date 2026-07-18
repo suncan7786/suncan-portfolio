@@ -818,56 +818,64 @@ section { padding: var(--gap-section) 0; }
 /* ============================================================
    Skills
    ============================================================ */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+.skills-section { padding: 60px 0; }
+.skill-group {
+  margin-bottom: 28px;
 }
-.skill-card {
-  padding: 28px;
-  background: var(--mist-light);
-  border-radius: 2px;
+.skill-group:last-of-type {
+  margin-bottom: 0;
 }
-.skill-card h4 {
-  font-size: 15px;
-  margin-bottom: 18px;
+.skill-group h4 {
+  font-size: 13px;
   color: var(--bronze);
   font-family: var(--font-body);
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  text-transform: uppercase;
 }
-.skill-item {
-  margin-bottom: 14px;
-}
-.skill-item:last-child {
-  margin-bottom: 0;
-}
-.skill-name {
+.skill-tags {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.skill-tag {
   font-size: 13px;
   color: var(--stone);
-  margin-bottom: 6px;
+  background: var(--mist-light);
+  padding: 6px 16px;
+  border-radius: 2px;
+  font-family: var(--font-body);
+  letter-spacing: 0.03em;
+  transition: background 0.2s, color 0.2s;
 }
-.skill-level-text {
-  color: var(--bronze);
-  font-size: 12px;
+.skill-tag:hover {
+  background: var(--bronze-dim);
+  color: var(--ink);
 }
-.skill-bar {
-  height: 4px;
+.lang-divider {
+  height: 1px;
   background: var(--mist);
-  border-radius: 2px;
-  overflow: hidden;
+  margin: 28px 0;
 }
-.skill-level {
-  height: 100%;
+.lang-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  font-size: 14px;
+  color: var(--stone);
+}
+.lang-row span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.lang-row span::before {
+  content: "";
+  width: 4px; height: 4px;
+  border-radius: 50%;
   background: var(--bronze);
-  border-radius: 2px;
-  opacity: 0.7;
-}
-
-@media (max-width: 768px) {
-  .skills-grid { grid-template-columns: 1fr; }
+  opacity: 0.6;
 }
 
 /* ============================================================
@@ -1520,68 +1528,53 @@ section { padding: var(--gap-section) 0; }
 <!-- ============================================================
      Skills
      ============================================================ -->
-<section class="reveal">
+<section class="reveal skills-section">
   <div class="container">
     <span class="section-label">技能与工具</span>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <h4>内容创作</h4>
-        <div class="skill-item">
-          <div class="skill-name"><span>新闻写作</span><span class="skill-level-text">熟练</span></div>
-          <div class="skill-bar"><div class="skill-level" style="width:90%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>脚本策划</span><span class="skill-level-text">熟练</span></div>
-          <div class="skill-bar"><div class="skill-level" style="width:85%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>短视频制作</span><span class="skill-level-text">熟练</span></div>
-          <div class="skill-bar"><div class="skill-level" style="width:88%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>摄影</span><span class="skill-level-text">熟练</span></div>
-          <div class="skill-bar"><div class="skill-level" style="width:85%"></div></div>
-        </div>
-      </div>
-      <div class="skill-card">
-        <h4>数据分析</h4>
-        <div class="skill-item">
-          <div class="skill-name"><span>SPSS</span><span class="skill-level-text">熟练</span></div>
-          <div class="skill-bar"><div class="skill-level" style="width:85%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>Nvivo</span><span class="skill-level-text">掌握</span></div>
-          <div class="skill-bar"><div class="skill-level" style="width:75%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>问卷设计</span><span class="skill-level-text">熟练</span></div>
-          <div class="skill-bar"><div class="skill-level" style="width:90%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>竞品分析</span><span class="skill-level-text">掌握</span></div>
-          <div class="skill-bar"><div class="skill-level" style="width:80%"></div></div>
-        </div>
-      </div>
-      <div class="skill-card">
-        <h4>设计与剪辑</h4>
-        <div class="skill-item">
-          <div class="skill-name"><span>Photoshop</span><span class="skill-level-text">熟练</span></div>
-          <div class="skill-bar"><div class="skill-level" style="width:85%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>Premiere</span><span class="skill-level-text">掌握</span></div>
-          <div class="skill-bar"><div class="skill-level" style="width:78%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>剪映</span><span class="skill-level-text">熟练</span></div>
-          <div class="skill-bar"><div class="skill-level" style="width:92%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>排版设计</span><span class="skill-level-text">掌握</span></div>
-          <div class="skill-bar"><div class="skill-level" style="width:80%"></div></div>
-        </div>
+
+    <div class="skill-group">
+      <h4>内容创作</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">新闻写作</span>
+        <span class="skill-tag">脚本策划</span>
+        <span class="skill-tag">短视频制作</span>
+        <span class="skill-tag">摄影</span>
       </div>
     </div>
+
+    <div class="skill-group">
+      <h4>数据分析</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">SPSS</span>
+        <span class="skill-tag">Nvivo 质性编码</span>
+        <span class="skill-tag">问卷设计</span>
+        <span class="skill-tag">竞品分析</span>
+        <span class="skill-tag">Office 办公</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h4>设计与剪辑</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Photoshop</span>
+        <span class="skill-tag">Premiere</span>
+        <span class="skill-tag">剪映</span>
+        <span class="skill-tag">秀米</span>
+        <span class="skill-tag">排版设计</span>
+      </div>
+    </div>
+
+    <div class="lang-divider"></div>
+
+    <div class="skill-group">
+      <h4>语言能力</h4>
+      <div class="lang-row">
+        <span>CET-4 / CET-6</span>
+        <span>普通话二甲</span>
+        <span>英语听说读写良好</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
