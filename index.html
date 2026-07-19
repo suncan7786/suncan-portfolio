@@ -789,20 +789,38 @@ section { padding: var(--gap-section) 0; }
   color: var(--bronze);
   font-weight: 700;
 }
-.certs-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+.certs-wrap {
+  position: relative;
 }
+.certs-scroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 4px 4px 16px 4px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.certs-scroll::-webkit-scrollbar { display: none; }
 .cert-item {
-  border-radius: 2px;
+  flex: 0 0 220px;
+  scroll-snap-align: start;
+  border-radius: 6px;
   overflow: hidden;
   background: var(--mist-light);
-  height: 280px;
+  aspect-ratio: 3 / 4;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--mist);
+}
+.cert-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(20, 24, 30, 0.1);
 }
 .cert-item img {
   max-width: 100%;
@@ -810,10 +828,111 @@ section { padding: var(--gap-section) 0; }
   width: auto;
   height: auto;
   object-fit: contain;
+  transition: transform 0.3s ease;
 }
+.cert-item:hover img {
+  transform: scale(1.03);
+}
+/* 渐隐边缘 */
+.certs-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0; right: 0; bottom: 16px;
+  width: 48px;
+  background: linear-gradient(to right, transparent, var(--paper));
+  pointer-events: none;
+  border-radius: 0 6px 6px 0;
+}
+/* 箭头按钮 */
+.certs-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(calc(-50% - 8px));
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--mist);
+  background: var(--paper);
+  color: var(--stone);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.certs-arrow:hover {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.certs-arrow.prev { left: -12px; }
+.certs-arrow.next { right: -12px; }
+
 @media (max-width: 768px) {
-  .certs-grid { grid-template-columns: repeat(2, 1fr); }
+  .cert-item { flex: 0 0 180px; }
+  .certs-arrow { display: none; }
+  .certs-wrap::after { width: 32px; }
 }
+
+/* Lightbox */
+.cert-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(20, 24, 30, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.cert-lightbox.active {
+  display: flex;
+  opacity: 1;
+}
+.cert-lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+.cert-lightbox.active img {
+  transform: scale(1);
+}
+.cert-lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cert-lightbox-close::before,
+.cert-lightbox-close::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 1.5px;
+  background: rgba(255, 255, 255, 0.7);
+  transition: background 0.2s;
+}
+.cert-lightbox-close::before { transform: rotate(45deg); }
+.cert-lightbox-close::after { transform: rotate(-45deg); }
+.cert-lightbox-close:hover::before,
+.cert-lightbox-close:hover::after { background: #fff; }
 
 /* ============================================================
    Skills
@@ -1502,28 +1621,38 @@ section { padding: var(--gap-section) 0; }
       <span>徐州市影视技能技术能手</span>
     </div>
 
-    <div class="certs-grid">
-      <div class="cert-item">
-        <img src="images/05-获奖证书/挑战杯一等奖.jpg" alt="挑战杯一等奖" loading="lazy" onerror="this.style.display='none'">
+    <div class="certs-wrap">
+      <button class="certs-arrow prev" onclick="scrollCerts(-1)" aria-label="上一张">‹</button>
+      <div class="certs-scroll" id="certsScroll">
+        <div class="cert-item" onclick="openCert(this)">
+          <img src="images/05-获奖证书/挑战杯一等奖.jpg" alt="挑战杯一等奖" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="cert-item" onclick="openCert(this)">
+          <img src="images/05-获奖证书/优秀毕业论文.jpg" alt="优秀毕业论文" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="cert-item" onclick="openCert(this)">
+          <img src="images/05-获奖证书/优秀毕业生.jpg" alt="优秀毕业生" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="cert-item" onclick="openCert(this)">
+          <img src="images/05-获奖证书/优秀学生干部.png" alt="优秀学生干部" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="cert-item" onclick="openCert(this)">
+          <img src="images/05-获奖证书/2024年媒介文化论坛学术会议论文获奖证书.png" alt="2024媒介文化论坛获奖证书" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="cert-item" onclick="openCert(this)">
+          <img src="images/05-获奖证书/三好学生.png" alt="三好学生" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="cert-item" onclick="openCert(this)">
+          <img src="images/05-获奖证书/徐州影视技能技术能手.png" alt="徐州影视技能技术能手" loading="lazy" onerror="this.style.display='none'">
+        </div>
       </div>
-      <div class="cert-item">
-        <img src="images/05-获奖证书/优秀毕业论文.jpg" alt="优秀毕业论文" loading="lazy" onerror="this.style.display='none'">
-      </div>
-      <div class="cert-item">
-        <img src="images/05-获奖证书/优秀毕业生.jpg" alt="优秀毕业生" loading="lazy" onerror="this.style.display='none'">
-      </div>
-      <div class="cert-item">
-        <img src="images/05-获奖证书/优秀学生干部.jpg" alt="优秀学生干部" loading="lazy" onerror="this.style.display='none'">
-      </div>
-      <div class="cert-item">
-        <img src="images/05-获奖证书/2024年媒介文化论坛学术会议论文获奖证书.png" alt="2024媒介文化论坛获奖证书" loading="lazy" onerror="this.style.display='none'">
-      </div>
-      <div class="cert-item">
-        <img src="images/05-获奖证书/三好学生.png" alt="三好学生" loading="lazy" onerror="this.style.display='none'">
-      </div>
-      <div class="cert-item">
-        <img src="images/05-获奖证书/徐州影视技能技术能手.png" alt="徐州影视技能技术能手" loading="lazy" onerror="this.style.display='none'">
-      </div>
+      <button class="certs-arrow next" onclick="scrollCerts(1)" aria-label="下一张">›</button>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="cert-lightbox" id="certLightbox" onclick="closeCert(event)">
+      <button class="cert-lightbox-close" onclick="closeCert(event)" aria-label="关闭"></button>
+      <img id="certLightboxImg" src="" alt="">
     </div>
   </div>
 </section>
@@ -1657,6 +1786,40 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Cert scroll arrows
+function scrollCerts(dir) {
+  const el = document.getElementById('certsScroll');
+  const amount = 236; // card width + gap
+  el.scrollBy({ left: dir * amount * 2, behavior: 'smooth' });
+}
+
+// Cert lightbox
+function openCert(el) {
+  const img = el.querySelector('img');
+  if (!img || img.style.display === 'none') return;
+  const lightbox = document.getElementById('certLightbox');
+  const lightboxImg = document.getElementById('certLightboxImg');
+  lightboxImg.src = img.src;
+  lightboxImg.alt = img.alt;
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeCert(e) {
+  if (e.target !== e.currentTarget && !e.target.classList.contains('cert-lightbox-close')) return;
+  const lightbox = document.getElementById('certLightbox');
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const lightbox = document.getElementById('certLightbox');
+    if (lightbox.classList.contains('active')) {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+});
 </script>
 
 </body>
